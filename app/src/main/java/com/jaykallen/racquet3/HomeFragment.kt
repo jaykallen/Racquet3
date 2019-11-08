@@ -1,5 +1,7 @@
 package com.jaykallen.racquet3
 
+import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +23,7 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         var view = binding.root
         setupButtons(view)
+        setupRoom(view)
         return view
     }
 
@@ -29,6 +32,11 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = homeViewModel
         setupSubscriber()
+
+    }
+
+    fun setupRoom(context: Context) {
+        RoomInstance.getInstance()
     }
 
     private fun setupButtons(view: View) {
