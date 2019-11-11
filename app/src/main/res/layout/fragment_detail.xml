@@ -1,14 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include
+        android:id="@+id/detailToolbar"
+        layout="@layout/content_toolbar" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/nameEdit"
+                android:layout_width="360dp"
+                android:layout_height="40dp"
+                android:hint="Enter Racquet Name" />
+
+            <TextView
+                android:id="@+id/unit_label"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/nameEdit"
+                android:gravity="center_vertical"
+                android:text="Units" />
+
+            <TextView
+                android:id="@+id/unitTextView"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/nameEdit"
+                android:layout_toRightOf="@id/unit_label"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onUnitsClick"
+                android:text="Inches"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/length_label"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/unit_label"
+                android:gravity="center_vertical"
+                android:text="Length" />
+
+            <EditText
+                android:id="@+id/lengthEdit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/unit_label"
+                android:layout_toEndOf="@id/length_label"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:text="27" />
+
+            <TextView
+                android:id="@+id/lengthUnitsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/unit_label"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@id/lengthEdit"
+                android:gravity="center"
+                android:text="inches" />
+
+            <TextView
+                android:id="@+id/balance_point_label"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/length_label"
+                android:gravity="center_vertical"
+                android:text="Balance Point" />
+
+            <EditText
+                android:id="@+id/balancePointEdit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/length_label"
+                android:layout_toEndOf="@id/balance_point_label"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                tools:name="4" />
+
+            <TextView
+                android:id="@+id/balancePointUnitsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/length_label"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@id/balancePointEdit"
+                android:gravity="center"
+                android:text="inches" />
+
+            <TextView
+                android:id="@+id/head_weight_label"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/balance_point_label"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/headWeightEdit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/balance_point_label"
+                android:layout_toRightOf="@id/head_weight_label"
+                android:gravity="center"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/head_direction_label"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/head_weight_label"
+                android:gravity="center_vertical"
+                android:text="Tendency" />
+
+            <Spinner
+                android:id="@+id/directionSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/headWeightEdit"
+                android:layout_marginBottom="6dp"
+                android:layout_toRightOf="@id/head_direction_label"
+                android:drawSelectorOnTop="true" />
+
+            <TextView
+                android:id="@+id/weight_label"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/head_direction_label"
+                android:gravity="center_vertical"
+                android:text="Weight" />
+
+            <EditText
+                android:id="@+id/weightEdit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/head_direction_label"
+                android:layout_toRightOf="@id/balance_point_label"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                tools:name="4" />
+
+            <TextView
+                android:id="@+id/weightUnitsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/head_direction_label"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@id/weightEdit"
+                android:gravity="center"
+                android:text="oz" />
+
+            <EditText
+                android:id="@+id/notesEdit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/weight_label"
+                android:hint="Enter Racquet Notes" />
+
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/notesEdit"
+                android:layout_marginTop="16dp"
+                android:onClick="onDeleteClick"
+                android:text="Delete Record" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

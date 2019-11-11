@@ -1,16 +1,13 @@
-package com.jaykallen.racquet3
+package com.jaykallen.racquet3.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jaykallen.racquet3.model.RacquetModel
 
-/**
- * Created by Jay Kallen on 6/13/18.
- * This creates and initializes the Room database to be used with the model table
- */
 
-@Database(entities = arrayOf(DataModel::class), version = 1)
+@Database(entities = arrayOf(RacquetModel::class), version = 1)
 abstract class RoomInstance: RoomDatabase() {
 
     abstract fun daoAccess(): RoomDao
@@ -18,14 +15,13 @@ abstract class RoomInstance: RoomDatabase() {
     companion object {
         var instance: RoomInstance? = null
 
-        fun getInstance(context: Context): RoomInstance? {
+        fun getInstance(context: Context): RoomInstance {
             if (instance == null) {
                 synchronized(RoomInstance::class) {
-                    instance = Room.databaseBuilder(context.applicationContext,
-                            RoomInstance::class.java, "room.db").build()
+                    instance = Room.databaseBuilder(context.applicationContext, RoomInstance::class.java, "room.db").build()
                 }
             }
-            return instance
+            return instance!!
         }
 
         fun destroyInstance() {

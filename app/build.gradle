@@ -48,4 +48,8 @@ dependencies {
     // Room
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    // Google Admob
+    implementation 'com.google.android.gms:play-services-ads:18.3.0'
+    // GDPR consent
+    implementation 'com.google.android.ads.consent:consent-library:1.0.7'
 }

@@ -1,7 +1,8 @@
-package com.jaykallen.racquet3
+package com.jaykallen.racquet3.room
 
 import android.os.AsyncTask
 import androidx.lifecycle.MutableLiveData
+import com.jaykallen.racquet3.model.RacquetModel
 
 /**
  * Created by Jay Kallen on 6/13/18.
@@ -9,79 +10,79 @@ import androidx.lifecycle.MutableLiveData
  */
 
 class RoomMgr {
-    class CreateData(var dataModel: DataModel): AsyncTask<String, String, String>() {
+    class createData(var racquetModel: RacquetModel): AsyncTask<String, String, String>() {
 
         override fun doInBackground(vararg p0: String?): String {
             println("Creating record in background")
             val databaseMgr = RoomInstance.instance
-            databaseMgr?.daoAccess()?.create(dataModel)
+            databaseMgr?.daoAccess()?.create(racquetModel)
             return ""
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            println("dataModel ${dataModel.name} added")
+            println("racquetModel ${racquetModel.name} added")
         }
     }
 
-    class GetAll: AsyncTask<String, String, String>() {
-        var dataLive: MutableLiveData<List<DataModel>> = MutableLiveData()
-        var dataModel: List<DataModel> = ArrayList()
+    class getAll: AsyncTask<String, String, String>() {
+        var racquetsLiveData: MutableLiveData<List<RacquetModel>> = MutableLiveData()
+        var racquetModel: List<RacquetModel> = ArrayList()
 
         override fun doInBackground(vararg p0: String?): String {
             println("Starting doInBackground")
             val roomMgr = RoomInstance.instance
-            dataModel = roomMgr?.daoAccess()?.getAll()?:ArrayList()
+            racquetModel = roomMgr?.daoAccess()?.getAll()?:ArrayList()
             return ""
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            println("DataModels retrieved = ${dataModel.size}")
-            dataLive.value = dataModel
+            println("Retrieved = ${racquetModel.size}")
+            racquetsLiveData.value = racquetModel
         }
     }
 
-    class GetById(val id: String): AsyncTask<String, String, String>() {
-        var dataLive: MutableLiveData<DataModel> = MutableLiveData()
-        var dataModel = DataModel()
+    class getById(val id: String): AsyncTask<String, String, String>() {
+        var dataLive: MutableLiveData<RacquetModel> = MutableLiveData()
+        var racquetModel = RacquetModel()
 
         override fun doInBackground(vararg p0: String?): String {
             val roomMgr = RoomInstance.instance
-            dataModel = roomMgr?.daoAccess()?.getById(id)?:DataModel()
+            racquetModel = roomMgr?.daoAccess()?.getById(id)?: RacquetModel()
             return ""
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            println("DataModels retrieved = ${dataModel.name}")
-            dataLive.value = dataModel
+            println("Retrieved = ${racquetModel.name}")
+            dataLive.value = racquetModel
         }
     }
 
-    class UpdateData(var dataModel: DataModel): AsyncTask<String, String, String>() {
+    class update(var racquetModel: RacquetModel): AsyncTask<String, String, String>() {
         override fun doInBackground(vararg p0: String?): String {
             val databaseMgr = RoomInstance.instance
-            databaseMgr?.daoAccess()?.update(dataModel)
+            databaseMgr?.daoAccess()?.update(racquetModel)
             return ""
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            println("dataModel ${dataModel.name} updated")
+            println("racquetModel ${racquetModel.name} updated")
         }
     }
 
-    class DeleteData(var dataModel: DataModel): AsyncTask<String, String, String>() {
+    class delete(var racquetModel: RacquetModel): AsyncTask<String, String, String>() {
         override fun doInBackground(vararg p0: String?): String {
             val databaseMgr = RoomInstance.instance
-            databaseMgr?.daoAccess()?.delete(dataModel)
+            databaseMgr?.daoAccess()?.delete(racquetModel)
             return ""
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            println("dataModel ${dataModel.name} deleted")
+            println("racquetModel ${racquetModel.name} deleted")
         }
     }
 

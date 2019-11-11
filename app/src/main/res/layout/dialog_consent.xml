@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_corners"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:textColor="@color/colorBlack"
+        android:text="We care about your privacy and data security. We keep this app free by showing ads." />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Can we continue to use your data to tailor ads for you?"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="10sp"
+        android:text="You can change your choice anytime in the app settings. Our partners will collect data and use a unique identifier on your device to show you ads." />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:text="Learn how this app and our partners collect and use data."
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:text="Yes, continue to see relevant ads"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:gravity="center"
+        android:text="No, see ads that are less relevant"
+        android:textColor="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:text="Pay for the ad-free version"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+</LinearLayout>
