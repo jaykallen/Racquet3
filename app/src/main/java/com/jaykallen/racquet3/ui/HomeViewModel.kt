@@ -9,7 +9,7 @@ class HomeViewModel : ViewModel() {
     private var thread: Job = Job()
     private var counter = 0
     private var running = true
-    var duration: Long = 5       // Refresh data every 20 seconds
+    var duration: Long = 3       // Refresh data every 20 seconds
     var storyLiveData: MutableLiveData<String> = MutableLiveData()
 
     fun loadDataRefresher() {

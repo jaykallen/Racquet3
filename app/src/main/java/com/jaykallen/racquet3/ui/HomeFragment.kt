@@ -9,7 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.jaykallen.racquet3.room.RoomInstance
+import androidx.navigation.Navigation
+import com.jaykallen.racquet3.room.RoomyDatabase
 import com.jaykallen.racquet3.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -30,26 +31,19 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = homeViewModel
-        setupSubscriber()
-        setupRoom()
-    }
-
-    private fun setupRoom() {
-        RoomInstance.getInstance(StartApp.applicationContext())
+        launchStory()
     }
 
     private fun setupButtons(view: View) {
-        view.findViewById<Button>(R.id.info_button).setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_infoFragment)
-        }
-        view.findViewById<Button>(R.id.settings_button).setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_settingsFragment)
+        view.findViewById<Button>(R.id.catalog_button).setOnClickListener {
+                        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_catalogFragment)
         }
     }
 
-    private fun setupSubscriber() {
-        homeViewModel.storyLiveData.observe(this, Observer { subscriber ->
-            actionText.text = subscriber
+    private fun launchStory() {
+        homeViewModel.loadDataRefresher()
+        homeViewModel.storyLiveData.observe(this, Observer { story ->
+            storyText.text = story
         })
     }
 

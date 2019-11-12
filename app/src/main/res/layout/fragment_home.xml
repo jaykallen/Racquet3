@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.jaykallen.racquet3.HomeViewModel" />
@@ -12,101 +13,31 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_court"
         tools:context=".LoginFragment">
 
         <Button
-            android:id="@+id/home_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_outline"
-            android:text="Home"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintEnd_toStartOf="@id/info_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/info_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_outline"
-            android:text="Info"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toEndOf="@id/home_button"
-            app:layout_constraintEnd_toStartOf="@id/settings_button"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/settings_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_outline"
-            android:text="Settings"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toEndOf="@id/info_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/titleText"
+            android:id="@+id/catalog_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Home"
-            android:textColor="@color/colorBlack"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_button" />
-
-        <TextView
-            android:id="@+id/actionText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:text="Action: None"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleText" />
-
-        <TextView
-            android:id="@+id/noteText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:text="Note: Each time the fragment is launched, it seems to create a new ViewModel"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/actionText" />
-
-        <Button
-            android:id="@+id/action_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/button_outline"
-            android:onClick="@{() -> viewModel.loadDataRefresher()}"
-            android:text="@{viewModel.name}"
+            android:text="Catalog"
             android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginTop="20dp" />
+
+        <TextView
+            android:id="@+id/storyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-2153652996366584/6959420599" />
+            app:layout_constraintTop_toBottomOf="@id/catalog_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

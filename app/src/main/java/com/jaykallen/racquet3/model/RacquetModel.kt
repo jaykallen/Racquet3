@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 // Note: Every time you change the database structure, you will need to recreate the emulator or else
 // you'll get a "need Realm Migration".
 
-@Entity(tableName = "RacquetModel")
+@Entity(tableName = "racquet_table")
 data class RacquetModel (
-    @PrimaryKey(autoGenerate = true) var id: Long = 0,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Long = 0,
     @ColumnInfo(name = "name") var name: String = "Default",
     @ColumnInfo(name = "units") var units: String? = "Inches",
     @ColumnInfo(name = "headSize") var headSize: Double = 100.0,

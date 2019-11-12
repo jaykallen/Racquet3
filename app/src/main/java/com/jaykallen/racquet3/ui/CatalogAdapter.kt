@@ -13,8 +13,7 @@ import kotlinx.android.synthetic.main.recycler_racquet.view.*
 
 
 class CatalogAdapter(
-    private val itemList: ArrayList<RacquetModel>,
-    var clickLambda: (RacquetModel) -> Unit
+    private val itemList: ArrayList<RacquetModel>, var clickLambda: (RacquetModel) -> Unit
 ) : RecyclerView.Adapter<CatalogAdapter.RecyclerHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_racquet, parent, false)

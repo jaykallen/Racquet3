@@ -14,8 +14,8 @@ class RoomMgr {
 
         override fun doInBackground(vararg p0: String?): String {
             println("Creating record in background")
-            val databaseMgr = RoomInstance.instance
-            databaseMgr?.daoAccess()?.create(racquetModel)
+//            val databaseMgr = RoomyDatabase.instance
+//            databaseMgr?.daoAccess()?.create(racquetModel)
             return ""
         }
 
@@ -26,13 +26,13 @@ class RoomMgr {
     }
 
     class getAll: AsyncTask<String, String, String>() {
-        var racquetsLiveData: MutableLiveData<List<RacquetModel>> = MutableLiveData()
-        var racquetModel: List<RacquetModel> = ArrayList()
+        var racquetsLiveData: MutableLiveData<ArrayList<RacquetModel>> = MutableLiveData()
+        var racquetModel: ArrayList<RacquetModel> = ArrayList()
 
         override fun doInBackground(vararg p0: String?): String {
             println("Starting doInBackground")
-            val roomMgr = RoomInstance.instance
-            racquetModel = roomMgr?.daoAccess()?.getAll()?:ArrayList()
+//            val roomMgr = RoomyDatabase.instance
+//            racquetModel = roomMgr?.daoAccess()?.getAll()?:ArrayList()
             return ""
         }
 
@@ -48,8 +48,8 @@ class RoomMgr {
         var racquetModel = RacquetModel()
 
         override fun doInBackground(vararg p0: String?): String {
-            val roomMgr = RoomInstance.instance
-            racquetModel = roomMgr?.daoAccess()?.getById(id)?: RacquetModel()
+//            val roomMgr = RoomyDatabase.instance
+//            racquetModel = roomMgr?.daoAccess()?.getById(id)?: RacquetModel()
             return ""
         }
 
@@ -62,8 +62,8 @@ class RoomMgr {
 
     class update(var racquetModel: RacquetModel): AsyncTask<String, String, String>() {
         override fun doInBackground(vararg p0: String?): String {
-            val databaseMgr = RoomInstance.instance
-            databaseMgr?.daoAccess()?.update(racquetModel)
+//            val databaseMgr = RoomyDatabase.instance
+//            databaseMgr?.daoAccess()?.update(racquetModel)
             return ""
         }
 
@@ -75,8 +75,8 @@ class RoomMgr {
 
     class delete(var racquetModel: RacquetModel): AsyncTask<String, String, String>() {
         override fun doInBackground(vararg p0: String?): String {
-            val databaseMgr = RoomInstance.instance
-            databaseMgr?.daoAccess()?.delete(racquetModel)
+//            val databaseMgr = RoomyDatabase.instance
+//            databaseMgr?.daoAccess()?.delete(racquetModel)
             return ""
         }
 
