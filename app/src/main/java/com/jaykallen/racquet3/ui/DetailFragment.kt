@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.StartApp
 import com.jaykallen.racquet3.managers.Helper
@@ -26,7 +28,7 @@ class DetailFragment : Fragment() {
     private val slopeInches = 0.125
     private var mUnits: String? = null
     private var mBalance: String = ""
-    private var mRacquetId: String = ""
+    private var recordId: String = ""
     private var mSlope: Double = 0.toDouble()
     private var mLength = 0.0
     private var mBalancePoint = 0.0
@@ -38,19 +40,31 @@ class DetailFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
         setupButtons(view)
+
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CatalogViewModel::class.java)
-        println("***************** RacquetModel Activity *******************")
+        println("***************** Detail Fragment *******************")
         updateUi()
         setUnits()
     }
 
+    override fun onStart() {
+        super.onStart()
+        arguments?.let {
+            val args = DetailFragmentArgs.fromBundle(it)
+            println("Safe Argument Received=${args.id}")
+        }
+
+    }
+
+
     private fun updateUi() {
-        //        mRacquetId = intent.getStringExtra(EXTRA_ID)?:""
+
+//                mRacquetId = intent.getStringExtra("Action")?:""
 //        if (mRacquetId != "add") {
 //            val racquet = RealmManager.getRacquet(this, mRacquetId)
 //            if (racquet != null) {
@@ -84,21 +98,21 @@ class DetailFragment : Fragment() {
     }
 
     private fun setupButtons(view: View) {
+        view.findViewById<TextView>(R.id.cancelText).setOnClickListener {
+            onCancelClick()
+        }
+        view.findViewById<TextView>(R.id.doneText).setOnClickListener {
+            onDoneClick()
+        }
+        view.findViewById<Button>(R.id.unitButton).setOnClickListener {
+            dialogUnits()
+        }
         view.findViewById<Button>(R.id.calculateButton).setOnClickListener {
             calcHeadWeight()
             calcBalancePoint()
         }
         view.findViewById<Button>(R.id.deleteButton).setOnClickListener {
             onDeleteClick()
-        }
-        view.findViewById<Button>(R.id.cancelText).setOnClickListener {
-            onCancelClick()
-        }
-        view.findViewById<Button>(R.id.doneText).setOnClickListener {
-            onDoneClick()
-        }
-        view.findViewById<Button>(R.id.unitButton).setOnClickListener {
-            dialogUnits()
         }
     }
 
@@ -141,13 +155,13 @@ class DetailFragment : Fragment() {
 
     private fun onDoneClick() {
         val racquetModel = createRacquet()
-        if (mRacquetId == "add") {
+        if (recordId == "add") {
             println("Add racquet " + nameEdit.text.toString())
             viewModel.insert(racquetModel)
         } else {
             println("Update racquet " + nameEdit.text.toString())
             racquetModel.id = 1
-            viewModel.insert(racquetModel)
+            viewModel.update(racquetModel)
         }
     }
 

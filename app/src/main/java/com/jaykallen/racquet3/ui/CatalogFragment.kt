@@ -8,12 +8,14 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.ui.CatalogAdapter
+import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.fragment_catalog.*
 
 
@@ -27,14 +29,14 @@ class CatalogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_catalog, container, false)
-        setupButtons(view)
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        println("*** Catalog Fragment ***")
+        println("***************** Catalog Fragment *******************")
         viewModel = ViewModelProviders.of(this).get(CatalogViewModel::class.java)
+        setupButtons()
         observeData()
     }
 
@@ -59,14 +61,20 @@ class CatalogFragment : Fragment() {
     }
 
     private fun onRecyclerClick(racquetModel: RacquetModel) {
-        println("RecyclerView selected $racquetModel")
-        Navigation.findNavController(view!!).navigate(R.id.action_catalogFragment_to_detailFragment)
+        println("RecyclerView selected $racquetModel with id=${racquetModel.id}")
+        navigateDetail(racquetModel.id)
     }
 
-    private fun setupButtons(view: View) {
-        view.findViewById<Button>(R.id.add_button).setOnClickListener {
-            Navigation.findNavController(view!!).navigate(R.id.action_catalogFragment_to_detailFragment)
+    private fun setupButtons() {
+        addImage.setOnClickListener {
+            navigateDetail(0L)
         }
+    }
+
+    private fun navigateDetail(id: Long) {
+        println("Navigating to record $id")
+        val action = CatalogFragmentDirections.actionCatalogFragmentToDetailFragment().setId(id)
+        Navigation.findNavController(view!!).navigate(action)
     }
 
 }

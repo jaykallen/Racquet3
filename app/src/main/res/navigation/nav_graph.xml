@@ -19,7 +19,8 @@
         android:label="CatalogFragment" >
         <action
             android:id="@+id/action_catalogFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -31,6 +32,10 @@
         <action
             android:id="@+id/action_detailFragment_to_catalogFragment"
             app:destination="@id/catalogFragment" />
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
     <fragment
         android:id="@+id/rulerFragment"

@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
+// Safe Args
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion 28
@@ -51,6 +50,7 @@ dependencies {
     // Live Data
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+
 
 //    // Google Admob
 //    implementation 'com.google.android.gms:play-services-ads:18.3.0'
