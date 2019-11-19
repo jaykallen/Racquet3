@@ -1,10 +1,9 @@
 package com.jaykallen.racquet3
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
+import androidx.core.view.GestureDetectorCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,9 +19,14 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        println("*** Catalog Fragment ***")
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        var view = binding.root
+        val view = binding.root
         setupButtons(view)
         return view
     }
@@ -36,7 +40,7 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons(view: View) {
         view.findViewById<Button>(R.id.catalog_button).setOnClickListener {
-                        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_catalogFragment)
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_catalogFragment)
         }
     }
 

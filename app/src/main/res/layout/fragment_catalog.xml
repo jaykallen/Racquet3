@@ -5,66 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_outline"
-        android:text="Home"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintEnd_toStartOf="@id/info_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/info_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_outline"
-        android:text="Info"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintStart_toEndOf="@id/home_button"
-        app:layout_constraintEnd_toStartOf="@id/settings_button"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_outline"
-        android:text="Settings"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintStart_toEndOf="@id/info_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Info"
-        android:textColor="@color/colorBlack"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home_button" />
-
-    <TextView
-        android:id="@+id/actionText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="Action: None"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleText" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -74,22 +14,19 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorWhite"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/action_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/actionText" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/add_button"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/action_button"
-        android:layout_width="100dp"
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/button_outline"
-        android:text="Action"
+        android:text="Add"
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

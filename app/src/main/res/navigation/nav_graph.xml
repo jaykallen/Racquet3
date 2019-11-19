@@ -28,10 +28,17 @@
         <action
             android:id="@+id/action_detailFragment_to_rulerFragment"
             app:destination="@id/rulerFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment" />
     </fragment>
     <fragment
         android:id="@+id/rulerFragment"
         android:name="com.jaykallen.racquet3.RulerFragment"
         android:label="fragment_ruler"
-        tools:layout="@layout/fragment_ruler" />
+        tools:layout="@layout/fragment_ruler" >
+        <action
+            android:id="@+id/action_rulerFragment_to_detailFragment2"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

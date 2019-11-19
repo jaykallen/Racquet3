@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.recycler_racquet.view.*
 
 
 class CatalogAdapter(
-    private val itemList: ArrayList<RacquetModel>, var clickLambda: (RacquetModel) -> Unit
+    private val itemList: List<RacquetModel>, var clickLambda: (RacquetModel) -> Unit
 ) : RecyclerView.Adapter<CatalogAdapter.RecyclerHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_racquet, parent, false)
@@ -33,8 +33,8 @@ class CatalogAdapter(
     inner class RecyclerHolder(holder: View) : RecyclerView.ViewHolder(holder),
         View.OnClickListener {
         private lateinit var item: RacquetModel
-        val nameText: TextView = holder.nameText
-        val weightText: TextView = holder.weightText
+        private val nameText: TextView = holder.nameText
+        private val weightText: TextView = holder.weightText
 
         init {
             holder.setOnClickListener(this)
@@ -43,7 +43,7 @@ class CatalogAdapter(
         fun bindRecyclerHolder(item: RacquetModel) {
             this.item = item
             val color: Int = when {
-                item.headLight != null -> R.color.colorBallGreen
+                item.balance != null -> R.color.colorBallGreen
                 else -> R.color.colorYellow
             }
             itemView.setBackgroundColor(ContextCompat.getColor(StartApp.applicationContext(), color))

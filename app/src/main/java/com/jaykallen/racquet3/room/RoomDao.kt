@@ -13,10 +13,13 @@ import com.jaykallen.racquet3.model.RacquetModel
 interface RoomDao {
 
     @Query("Select * from racquet_table")
-    fun getAll(): LiveData<ArrayList<RacquetModel>>
+    fun getAll(): LiveData<List<RacquetModel>>
+
+    @Query("Select * from racquet_table order by name")
+    fun getAllOrdered(): LiveData<List<RacquetModel>>
 
     @Query("Select * from racquet_table where id=:id")
-    fun getId(id: String): LiveData<RacquetModel>
+    fun getId(id: Long): LiveData<RacquetModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(racquetModel: RacquetModel)
