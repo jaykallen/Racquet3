@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RulerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/content_main_toolbar" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/rulerImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ruler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/fractionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fraction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/decimalText"
+        app:layout_constraintTop_toBottomOf="@id/rulerImage" />
+
+    <TextView
+        android:id="@+id/decimalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decimal"
+        app:layout_constraintStart_toEndOf="@id/fractionText"
+        app:layout_constraintEnd_toStartOf="@id/millimeterText"
+        app:layout_constraintTop_toBottomOf="@id/rulerImage" />
+
+    <TextView
+        android:id="@+id/millimeterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Millimeter"
+        app:layout_constraintStart_toEndOf="@id/decimalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rulerImage" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fractionText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

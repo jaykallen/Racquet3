@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_homeFragment_to_catalogFragment"
             app:destination="@id/catalogFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_guideFragment"
+            app:destination="@id/guideFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_measureFragment"
+            app:destination="@id/measureFragment" />
     </fragment>
     <fragment
         android:id="@+id/catalogFragment"
@@ -46,4 +52,12 @@
             android:id="@+id/action_rulerFragment_to_detailFragment2"
             app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/guideFragment"
+        android:name="com.jaykallen.racquet3.ui.GuideFragment"
+        android:label="GuideFragment" />
+    <fragment
+        android:id="@+id/measureFragment"
+        android:name="com.jaykallen.racquet3.ui.MeasureFragment"
+        android:label="MeasureFragment" />
 </navigation>
