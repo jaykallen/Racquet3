@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupButtons(view: View) {
-        view.findViewById<Button>(R.id.catalog_button).setOnClickListener {
+        view.findViewById<Button>(R.id.catalogButton).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_catalogFragment)
         }
     }
