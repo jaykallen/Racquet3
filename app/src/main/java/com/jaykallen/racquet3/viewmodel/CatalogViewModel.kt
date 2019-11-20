@@ -19,23 +19,4 @@ class CatalogViewModel(application: Application) : AndroidViewModel(application)
         allLiveData = repository.allLiveData
         allOrderedLiveData = repository.allOrderedLiveData
     }
-
-    fun insert(racquetModel: RacquetModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.insert(racquetModel)
-        }
-    }
-
-    fun update(racquetModel: RacquetModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.update(racquetModel)
-        }
-    }
-
-    fun delete(racquetModel: RacquetModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.delete(racquetModel)
-        }
-    }
-
 }

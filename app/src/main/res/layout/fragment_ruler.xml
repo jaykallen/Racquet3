@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/content_main_toolbar" />
+        layout="@layout/content_info_toolbar" />
 
     <ImageView
         android:id="@+id/rulerImage"
@@ -46,10 +46,14 @@
         app:layout_constraintTop_toBottomOf="@id/rulerImage" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_goneMarginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/fractionText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fractionText" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

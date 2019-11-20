@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/mainToolbar"
+        android:id="@+id/toolbar"
         layout="@layout/content_detail_toolbar" />
 
     <TextView

@@ -24,23 +24,32 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("*** Catalog Fragment ***")
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         val view = binding.root
-        setupButtons(view)
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        println("***************** Home Fragment *******************")
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = homeViewModel
+        setupButtons(view!!)
         launchStory()
     }
 
     private fun setupButtons(view: View) {
         view.findViewById<Button>(R.id.catalogButton).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_catalogFragment)
+        }
+        view.findViewById<Button>(R.id.guideButton).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_guideFragment)
+        }
+        view.findViewById<Button>(R.id.measureButton).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_measureFragment)
+        }
+        view.findViewById<Button>(R.id.rulerButton).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_rulerFragment)
         }
     }
 

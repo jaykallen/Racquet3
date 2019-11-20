@@ -15,101 +15,9 @@
         android:layout_height="match_parent"
         tools:context=".LoginFragment">
 
-        <Button
-            android:id="@+id/catalogButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_gray"
-            android:text="See Catalog"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginTop="20dp" />
-
-        <Button
-            android:id="@+id/guideButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_gray"
-            android:text="See Headweight Guide"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/catalogButton"
-            app:layout_goneMarginTop="20dp" />
-
-        <Button
-            android:id="@+id/measureButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_gray"
-            android:text="How to Measure"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideButton"
-            app:layout_goneMarginTop="20dp" />
-
-        <Button
-            android:id="@+id/rulerButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_gray"
-            android:text="Ruler Guide"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/measureButton"
-            app:layout_goneMarginTop="20dp" />
-
-        <Button
-            android:id="@+id/unitsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_gray"
-            android:text="Change Units From Inches"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rulerButton"
-            app:layout_goneMarginTop="20dp" />
-
-        <Button
-            android:id="@+id/clearButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_gray"
-            android:text="Clear all Racquets"
-            android:textColor="@color/colorBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/unitsButton"
-            app:layout_goneMarginTop="20dp" />
-
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Title"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clearButton" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/content_main_toolbar" />
 
         <TextView
             android:id="@+id/storyText"
@@ -123,7 +31,101 @@
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleText" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <Button
+            android:id="@+id/catalogButton"
+            android:layout_width="0dp"
+            android:layout_height="210dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_outline"
+            android:text="See Catalog"
+            android:drawableTop="@drawable/list"
+            android:paddingTop="50dp"
+            android:paddingBottom="50dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toStartOf="@id/guideButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/storyText" />
+
+        <Button
+            android:id="@+id/guideButton"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_outline"
+            android:text="See Headweight Guide"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/catalogButton"
+            app:layout_constraintTop_toBottomOf="@id/storyText"
+            app:layout_goneMarginTop="20dp" />
+
+        <Button
+            android:id="@+id/measureButton"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_outline"
+            android:text="How to Measure"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/catalogButton"
+            app:layout_constraintTop_toBottomOf="@id/guideButton"
+            app:layout_goneMarginTop="20dp" />
+
+        <Button
+            android:id="@+id/rulerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_outline"
+            android:text="Ruler Guide"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/catalogButton"
+            app:layout_goneMarginTop="20dp" />
+
+        <Button
+            android:id="@+id/unitsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_outline"
+            android:drawableStart="@drawable/settings"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="Change Units From Inches"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rulerButton"
+            app:layout_goneMarginTop="20dp" />
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_outline"
+            android:drawableStart="@drawable/settings"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="Clear all Racquets"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/unitsButton"
+            app:layout_goneMarginTop="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

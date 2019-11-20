@@ -8,77 +8,80 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.StartApp
 import com.jaykallen.racquet3.managers.Helper
 import com.jaykallen.racquet3.managers.SharedPrefsManager
 import com.jaykallen.racquet3.model.RacquetModel
-import com.procatdt.navsample.CatalogViewModel
+import com.jaykallen.racquet3.viewmodel.DetailViewModel
+import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.dialog_units.*
 import kotlinx.android.synthetic.main.dialog_yesno.*
 import kotlinx.android.synthetic.main.fragment_detail.*
 
+// todo add calculations to the viewmodel
 
 class DetailFragment : Fragment() {
-    private lateinit var viewModel: CatalogViewModel
+    private lateinit var viewModel: DetailViewModel
     private val slopeMetric = 0.3175
     private val slopeInches = 0.125
     private var mUnits: String? = null
     private var mBalance: String = ""
-    private var recordId: String = ""
+    private var recordId: Long = 0L
     private var mSlope: Double = 0.toDouble()
     private var mLength = 0.0
     private var mBalancePoint = 0.0
     private var mHeadWeight = 0.0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_detail, container, false)
-        setupButtons(view)
-
-        return view
+        return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CatalogViewModel::class.java)
         println("***************** Detail Fragment *******************")
-        updateUi()
-        setUnits()
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        getSafeArgs()
+        listenData()
+        setupToolbar()
+        setupButtons(view!!)
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun setupToolbar() {
+        titleText.text = "My Catalog"
+    }
+
+    private fun getSafeArgs() {
         arguments?.let {
             val args = DetailFragmentArgs.fromBundle(it)
+            recordId = args.id
             println("Safe Argument Received=${args.id}")
         }
-
     }
 
+    private fun listenData() {
+        println("listening to id call")
+        viewModel.getId(recordId)
+        viewModel.idLiveData?.observe(this, Observer { item ->
+            updateUi(item)
+        })
+    }
 
-    private fun updateUi() {
-
-//                mRacquetId = intent.getStringExtra("Action")?:""
-//        if (mRacquetId != "add") {
-//            val racquet = RealmManager.getRacquet(this, mRacquetId)
-//            if (racquet != null) {
-//                nameEdit.setText(racquet.name)
-//                lengthEdit.setText(racquet.length)
-//                balancePointEdit.setText(racquet.balancePoint)
-//                headWeightEdit.setText(racquet.headWeight)
-//                weightEdit.setText(racquet.weight)
-//                setDirectionSpinner(racquet.headDirection ?: "")
-//                notesEdit.setText(racquet.notes)
-//            }
-//        } else {
-//            deleteButton.visibility = View.INVISIBLE
-//        }
+    private fun updateUi(racquet: RacquetModel) {
+        if (racquet != null) {
+            println("Updating UI with ${racquet.name}")
+            nameEdit.setText(racquet.name)
+            lengthEdit.setText(racquet.length.toString())
+            weightEdit.setText(racquet.weight.toString())
+            balancePointEdit.setText(racquet.balancePoint.toString())
+            headWeightEdit.setText(racquet.headWeight.toString())
+            notesEdit.setText(racquet.notes)
+        }
     }
 
     private fun setUnits() {
@@ -139,7 +142,7 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun createRacquet() :RacquetModel {
+    private fun createRacquet(): RacquetModel {
         return RacquetModel(
             0, nameEdit.text.toString(), mUnits ?: "",
             headSizeEdit.text.toString().toDouble(),
@@ -155,7 +158,7 @@ class DetailFragment : Fragment() {
 
     private fun onDoneClick() {
         val racquetModel = createRacquet()
-        if (recordId == "add") {
+        if (recordId == 0L) {
             println("Add racquet " + nameEdit.text.toString())
             viewModel.insert(racquetModel)
         } else {

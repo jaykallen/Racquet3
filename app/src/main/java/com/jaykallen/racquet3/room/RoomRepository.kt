@@ -9,6 +9,7 @@ import com.jaykallen.racquet3.model.RacquetModel
 class RoomRepository(private val roomDao: RoomDao) {
     val allLiveData: LiveData<List<RacquetModel>> = roomDao.getAll()
     val allOrderedLiveData: LiveData<List<RacquetModel>> = roomDao.getAllOrdered()
+    var idLiveData: LiveData<RacquetModel>? = null
 
 //    val idLiveData(var id: long): LiveData<List<RacquetModel>> = roomDao.getId(id)
 //    I don't know how to do a single lookup from the database
@@ -16,6 +17,10 @@ class RoomRepository(private val roomDao: RoomDao) {
 //        idLiveData = roomDao!!.getId(id)
 //        return idLiveData
 //    }
+
+    suspend fun getId(id: Long) {
+        idLiveData = roomDao.getId(id)
+    }
 
     suspend fun insert(racquetModel: RacquetModel) {
         roomDao.insert(racquetModel)

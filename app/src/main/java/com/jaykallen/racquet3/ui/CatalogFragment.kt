@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +14,11 @@ import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.ui.CatalogAdapter
 import kotlinx.android.synthetic.main.content_main_toolbar.*
+import kotlinx.android.synthetic.main.content_main_toolbar.titleText
 import kotlinx.android.synthetic.main.fragment_catalog.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
+// todo add a home button to the toolbar
 
 class CatalogFragment : Fragment() {
     private lateinit var recyclerAdapter: CatalogAdapter
@@ -38,6 +39,11 @@ class CatalogFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(CatalogViewModel::class.java)
         setupButtons()
         observeData()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        titleText.text = "My Catalog"
     }
 
     private fun observeData() {
@@ -62,16 +68,16 @@ class CatalogFragment : Fragment() {
 
     private fun onRecyclerClick(racquetModel: RacquetModel) {
         println("RecyclerView selected $racquetModel with id=${racquetModel.id}")
-        navigateDetail(racquetModel.id)
+        setSafeArgs(racquetModel.id)
     }
 
     private fun setupButtons() {
         addImage.setOnClickListener {
-            navigateDetail(0L)
+            setSafeArgs(0L)
         }
     }
 
-    private fun navigateDetail(id: Long) {
+    private fun setSafeArgs(id: Long) {
         println("Navigating to record $id")
         val action = CatalogFragmentDirections.actionCatalogFragmentToDetailFragment().setId(id)
         Navigation.findNavController(view!!).navigate(action)

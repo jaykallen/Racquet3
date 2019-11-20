@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_measureFragment"
             app:destination="@id/measureFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_rulerFragment"
+            app:destination="@id/rulerFragment" />
     </fragment>
     <fragment
         android:id="@+id/catalogFragment"
