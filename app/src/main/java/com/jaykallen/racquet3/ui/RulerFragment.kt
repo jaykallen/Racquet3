@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,7 +42,7 @@ class RulerFragment : Fragment() {
     }
 
     private fun setupButtons(view: View) {
-        view.findViewById<Button>(R.id.backText).setOnClickListener {
+        view.findViewById<TextView>(R.id.backText).setOnClickListener {
 //            view.finish()         // todo how to finish a fragment??
         }
     }

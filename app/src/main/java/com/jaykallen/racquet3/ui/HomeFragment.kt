@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.core.view.GestureDetectorCompat
+import androidx.core.view.isInvisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,6 +12,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.jaykallen.racquet3.room.RoomyDatabase
 import com.jaykallen.racquet3.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.content_info_toolbar.*
+import kotlinx.android.synthetic.main.content_info_toolbar.titleText
+import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // JK 2019-11-11: Attempt to use Room db in Sandbox environment to put into Manage Right later.
@@ -39,6 +43,12 @@ class HomeFragment : Fragment() {
         binding.viewModel = homeViewModel
         setupButtons(view!!)
         launchStory()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        titleText.text = "In Development"
+        addImage.visibility = View.INVISIBLE
     }
 
     private fun setupButtons(view: View) {
