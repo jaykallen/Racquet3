@@ -9,11 +9,12 @@
     <string name="calc_head_weight">Calculate Head Weight</string>
     <string name="calc_balance_point">Calculate Balance Point</string>
     <string name="signature">Created by Jay Kallen 2016</string>
-    <string name="directions1">Manufacturer claims of the balance point are often incorrect and are altered depending upon
-        modifications to racquet such as new grips, different strings, etc. </string>
-    <string name="directions2">In order to determine the balance point of your racquet, lie a racquet on a table or countertop
-        with the stringed head portion of the racquet hanging off the edge.  Slowly slide the racquet until it reaches a balancing
-        point where it is about to fall off.  Mark this point and measure from the bottom of the racquet.</string>
+    <string name="directions1">Manufacturer claims of the balance point are often incorrect due to quality control and change
+        after ordinary maintenance such as new grips, strings, etc. </string>
+    <string name="directions2">To determine the balance point: lie a racquet on a table or counter top with the handle portion
+        hanging off the edge.  Slowly slide the racquet until it reaches a balancing point where it is about to fall off.
+        Mark this point and measure from the bottom of the handle.</string>
+    <string name="directions3">Use the ruler guide to determine the decimals used for each hash mark on the ruler. </string>
     <string-array name="head_options">
         <item>Head Light</item>
         <item>Neutral</item>

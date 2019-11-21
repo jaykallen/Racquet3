@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaykallen.racquet3.model.RulerModel
@@ -43,7 +42,7 @@ class RulerFragment : Fragment() {
 
     private fun setupButtons(view: View) {
         view.findViewById<Button>(R.id.backText).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_rulerFragment_to_detailFragment2)
+//            view.finish()         // todo how to finish a fragment??
         }
     }
 

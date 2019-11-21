@@ -62,5 +62,9 @@
     <fragment
         android:id="@+id/measureFragment"
         android:name="com.jaykallen.racquet3.ui.MeasureFragment"
-        android:label="MeasureFragment" />
+        android:label="MeasureFragment" >
+        <action
+            android:id="@+id/action_measureFragment_to_rulerFragment"
+            app:destination="@id/rulerFragment" />
+    </fragment>
 </navigation>
