@@ -2,7 +2,6 @@ package com.procatdt.navsample
 
 import android.app.Application
 import androidx.lifecycle.*
-import androidx.room.RoomDatabase
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.room.RoomRepository
 import com.jaykallen.racquet3.room.RoomyDatabase
@@ -10,13 +9,29 @@ import kotlinx.coroutines.*
 
 class CatalogViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: RoomRepository
-    var allLiveData: LiveData<List<RacquetModel>>
-    var allOrderedLiveData: LiveData<List<RacquetModel>>
+    var allLiveData = MutableLiveData<List<RacquetModel>>()
+    var allOrderedLiveData = MutableLiveData<List<RacquetModel>>()
 
     init {
-        val userDao = RoomyDatabase.getDatabase(application).roomDao()
-        repository = RoomRepository(userDao)
-        allLiveData = repository.allLiveData
-        allOrderedLiveData = repository.allOrderedLiveData
+        val dao = RoomyDatabase.getDatabase(application).roomDao()
+        repository = RoomRepository(dao)
+    }
+
+    fun getAll() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val itemList = repository.getAll()
+            withContext(Dispatchers.Main) {
+                allLiveData.value = itemList
+            }
+        }
+    }
+
+    fun getAllOrdered() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val itemList = repository.getAllOrdered()
+            withContext(Dispatchers.Main) {
+                allOrderedLiveData.value = itemList
+            }
+        }
     }
 }

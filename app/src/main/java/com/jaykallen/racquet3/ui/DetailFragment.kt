@@ -53,7 +53,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        titleText.text = "My Catalog"
+        titleText.text = "Detail"
     }
 
     private fun getSafeArgs() {
@@ -67,21 +67,19 @@ class DetailFragment : Fragment() {
     private fun listenData() {
         println("listening to id call")
         viewModel.getId(recordId)
-        viewModel.idLiveData?.observe(this, Observer { item ->
+        viewModel.idLiveData.observe(this, Observer { item ->
             updateUi(item)
         })
     }
 
     private fun updateUi(racquet: RacquetModel) {
-        if (racquet != null) {
-            println("Updating UI with ${racquet.name}")
-            nameEdit.setText(racquet.name)
-            lengthEdit.setText(racquet.length.toString())
-            weightEdit.setText(racquet.weight.toString())
-            balancePointEdit.setText(racquet.balancePoint.toString())
-            headWeightEdit.setText(racquet.headWeight.toString())
-            notesEdit.setText(racquet.notes)
-        }
+        println("Updating UI with ${racquet.name}")
+        nameEdit.setText(racquet.name)
+        lengthEdit.setText(racquet.length.toString())
+        weightEdit.setText(racquet.weight.toString())
+        balancePointEdit.setText(racquet.balancePoint.toString())
+        headWeightEdit.setText(racquet.headWeight.toString())
+        notesEdit.setText(racquet.notes)
     }
 
     private fun setUnits() {
@@ -183,13 +181,13 @@ class DetailFragment : Fragment() {
     }
 
     private fun onCancelClick() {
-        Navigation.findNavController(view!!).navigate(R.id.action_detailFragment_to_catalogFragment)
+        Navigation.findNavController(view!!).popBackStack(R.id.action_detailFragment_to_catalogFragment ,false)
     }
 
     private fun setDirectionSpinner2(direction: Double) {
-        directionSpinner.post {
+        balanceSpinner.post {
             var headdir = 1
-            mBalance = "Neutral"
+            mBalance = "Even"
             if (direction < 0) {
                 headdir = 0
                 mBalance = "Head Light"
@@ -197,13 +195,13 @@ class DetailFragment : Fragment() {
                 headdir = 2
                 mBalance = "Head Heavy"
             }
-            directionSpinner.setSelection(headdir)
+            balanceSpinner.setSelection(headdir)
         }
     }
 
     private fun getDirectionSpinner(value: Double?): Double {
         var value = value
-        val headdir = directionSpinner.selectedItemPosition
+        val headdir = balanceSpinner.selectedItemPosition
         if (headdir == 0) {
             value = value!! * -1
         }

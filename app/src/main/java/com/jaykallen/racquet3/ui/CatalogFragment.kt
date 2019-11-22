@@ -47,6 +47,7 @@ class CatalogFragment : Fragment() {
     }
 
     private fun observeData() {
+        viewModel.getAll()
         viewModel.allLiveData.observe(this, Observer { allItems ->
             setupRecycler(allItems)
         })

@@ -24,11 +24,12 @@
                 android:id="@+id/nameEdit"
                 android:layout_width="360dp"
                 android:layout_height="40dp"
-                android:hint="Enter Racquet Name" />
+                android:hint="Enter Racquet Name"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/unit_label"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/nameEdit"
                 android:gravity="center_vertical"
@@ -45,26 +46,25 @@
                 android:onClick="onUnitsClick"
                 android:text="Inches"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/unitButton"
-                android:text="Change"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:textAllCaps="false"
-                android:layout_below="@id/nameEdit"
-                android:background="@drawable/button_outline"
                 android:layout_width="100dp"
-                android:layout_height="35dp" />
+                android:layout_height="35dp"
+                android:layout_below="@id/nameEdit"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/button_outline"
+                android:text="Change"
+                android:textAllCaps="false" />
 
             <TextView
                 android:id="@+id/headSizeLabel"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@+id/unit_label"
                 android:gravity="center_vertical"
-                android:text="head Size:" />
+                android:text="Head Size" />
 
             <EditText
                 android:id="@+id/headSizeEdit"
@@ -74,7 +74,8 @@
                 android:layout_toEndOf="@id/lengthLabel"
                 android:gravity="center"
                 android:inputType="numberDecimal"
-                android:text="100" />
+                android:text="100"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/headSizeUnitsText"
@@ -88,7 +89,7 @@
 
             <TextView
                 android:id="@+id/lengthLabel"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@+id/headSizeLabel"
                 android:gravity="center_vertical"
@@ -102,7 +103,8 @@
                 android:layout_toEndOf="@id/lengthLabel"
                 android:gravity="center"
                 android:inputType="numberDecimal"
-                android:text="27" />
+                android:text="27"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/lengthUnitsText"
@@ -117,7 +119,7 @@
 
             <TextView
                 android:id="@+id/weightLabel"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/lengthLabel"
                 android:gravity="center_vertical"
@@ -131,6 +133,7 @@
                 android:layout_toRightOf="@id/balancePointLabel"
                 android:gravity="center"
                 android:inputType="numberDecimal"
+                android:textSize="16sp"
                 tools:name="4" />
 
             <TextView
@@ -145,7 +148,7 @@
 
             <TextView
                 android:id="@+id/balancePointLabel"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/weightLabel"
                 android:gravity="center_vertical"
@@ -158,6 +161,7 @@
                 android:layout_below="@id/weightLabel"
                 android:layout_toEndOf="@id/balancePointLabel"
                 android:gravity="center"
+                android:textSize="16sp"
                 android:inputType="numberDecimal"
                 tools:name="4" />
 
@@ -175,16 +179,15 @@
                 android:id="@+id/rulerButton"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
-                android:textAllCaps="false"
                 android:layout_below="@id/weightLabel"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
                 android:background="@drawable/button_outline"
-                android:text="Ruler" />
+                android:text="Ruler"
+                android:textAllCaps="false" />
 
             <TextView
                 android:id="@+id/headWeightLabel"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/balancePointLabel"
                 android:gravity="center_vertical"
@@ -203,28 +206,29 @@
                 android:id="@+id/calculateButton"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
-                android:textAllCaps="false"
                 android:layout_below="@id/balancePointLabel"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
                 android:background="@drawable/button_outline"
-                android:text="Calculate" />
+                android:textSize="16sp"
+                android:text="Calculate"
+                android:textAllCaps="false" />
 
             <TextView
-                android:id="@+id/headDirectionLabel"
-                android:layout_width="100dp"
+                android:id="@+id/balanceLabel"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/headWeightLabel"
                 android:gravity="center_vertical"
                 android:text="Balance" />
 
             <Spinner
-                android:id="@+id/directionSpinner"
+                android:id="@+id/balanceSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@id/headWeightEdit"
+                android:textSize="16sp"
                 android:layout_marginBottom="6dp"
-                android:layout_toRightOf="@id/headDirectionLabel"
+                android:layout_toRightOf="@id/balanceLabel"
                 android:drawSelectorOnTop="true" />
 
 
@@ -232,7 +236,7 @@
                 android:id="@+id/notesEdit"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_below="@id/directionSpinner"
+                android:layout_below="@id/balanceLabel"
                 android:hint="Optional Notes" />
 
 

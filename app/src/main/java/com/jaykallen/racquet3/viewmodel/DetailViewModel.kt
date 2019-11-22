@@ -2,32 +2,31 @@ package com.jaykallen.racquet3.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.room.RoomRepository
 import com.jaykallen.racquet3.room.RoomyDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: RoomRepository
-    var allLiveData: LiveData<List<RacquetModel>>
-    var allOrderedLiveData: LiveData<List<RacquetModel>>
-    var idLiveData: LiveData<RacquetModel>?
+    var idLiveData = MutableLiveData<RacquetModel>()
 
     init {
-        val userDao = RoomyDatabase.getDatabase(application).roomDao()
-        repository = RoomRepository(userDao)
-        allLiveData = repository.allLiveData
-        allOrderedLiveData = repository.allOrderedLiveData
-        idLiveData = repository.idLiveData
+        val dao = RoomyDatabase.getDatabase(application).roomDao()
+        repository = RoomRepository(dao)
     }
 
     fun getId(id: Long) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.getId(id)
+            val item = repository.getId(id)
+            withContext(Dispatchers.Main) {
+                idLiveData.value = item
+            }
         }
     }
 
