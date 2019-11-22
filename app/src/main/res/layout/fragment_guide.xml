@@ -9,14 +9,14 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/content_detail_toolbar" />
+        layout="@layout/content_info_toolbar" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Headlight Quick Reference Guide"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,21 +29,21 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="Points"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight=".3"
             android:gravity="center"
             android:text="Inches"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
         <TextView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight=".3"
             android:gravity="center"
             android:text="Cm"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
 
@@ -57,7 +57,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="0"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -65,7 +65,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="13.5"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -73,7 +73,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="34.290"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -86,7 +86,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="1"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -94,7 +94,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="13.375"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -102,7 +102,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="33.973"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -114,7 +114,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="2"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -122,7 +122,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="13.25"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -130,7 +130,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="33.655"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -142,7 +142,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="3"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -150,7 +150,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="13.125"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -158,7 +158,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="33.338"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -170,7 +170,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="4"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -178,7 +178,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="13"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -186,7 +186,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="33.020"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -198,7 +198,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="5"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -206,7 +206,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.875"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -214,7 +214,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="32.703"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -226,7 +226,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="6"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -234,7 +234,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.75"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -242,7 +242,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="32.385"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -254,7 +254,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="7"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -262,7 +262,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.625"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -270,7 +270,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="32.068"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -282,7 +282,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="8"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -290,7 +290,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.5"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -298,7 +298,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="31.750"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -310,7 +310,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="9"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -318,7 +318,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.375"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -326,7 +326,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="31.433"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -338,7 +338,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="10"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -346,7 +346,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.25"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -354,7 +354,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="31.115"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -366,7 +366,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="11"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -374,7 +374,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12.125"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -382,7 +382,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="30.798"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -394,7 +394,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -402,7 +402,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="12"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -410,7 +410,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="30.480"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -422,7 +422,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="13"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -430,7 +430,7 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="11.875"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="30dp"
@@ -438,6 +438,6 @@
             android:layout_weight=".3"
             android:gravity="center"
             android:text="30.163"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

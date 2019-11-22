@@ -44,11 +44,6 @@ class CatalogAdapter(
 
         fun bindRecyclerHolder(item: RacquetModel) {
             this.item = item
-//            val color: Int = when {
-//                item.balance != null -> R.color.colorBallGreen
-//                else -> R.color.colorYellow
-//            }
-//            itemView.setBackgroundColor(ContextCompat.getColor(StartApp.applicationContext(), color))
         }
 
         fun bindRecyclerData(item: RacquetModel) {
