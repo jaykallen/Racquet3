@@ -34,17 +34,10 @@ class RulerFragment : Fragment() {
         println("***************** Ruler Fragment *******************")
         setupRecycler(rulerArrayList())
         setupToolbar()
-        setupButtons(view!!)
     }
 
     private fun setupToolbar() {
         titleText.text = "Ruler Guide"
-    }
-
-    private fun setupButtons(view: View) {
-        view.findViewById<TextView>(R.id.backText).setOnClickListener {
-//            view.finish()         // todo how to finish a fragment??
-        }
     }
 
     private fun rulerArrayList(): ArrayList<RulerModel> {

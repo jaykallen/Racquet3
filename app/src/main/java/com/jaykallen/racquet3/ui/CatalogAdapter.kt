@@ -34,7 +34,9 @@ class CatalogAdapter(
         View.OnClickListener {
         private lateinit var item: RacquetModel
         private val nameText: TextView = holder.nameText
+        private val headSizeText: TextView = holder.headSizeText
         private val weightText: TextView = holder.weightText
+        private val headWeightText: TextView = holder.headWeightText
 
         init {
             holder.setOnClickListener(this)
@@ -42,16 +44,18 @@ class CatalogAdapter(
 
         fun bindRecyclerHolder(item: RacquetModel) {
             this.item = item
-            val color: Int = when {
-                item.balance != null -> R.color.colorBallGreen
-                else -> R.color.colorYellow
-            }
-            itemView.setBackgroundColor(ContextCompat.getColor(StartApp.applicationContext(), color))
+//            val color: Int = when {
+//                item.balance != null -> R.color.colorBallGreen
+//                else -> R.color.colorYellow
+//            }
+//            itemView.setBackgroundColor(ContextCompat.getColor(StartApp.applicationContext(), color))
         }
 
         fun bindRecyclerData(item: RacquetModel) {
             nameText.text = item.name
+            headSizeText.text = "${item.headSize}"
             weightText.text = "${item.weight}"
+            headWeightText.text = "${item.headWeight} HL"
         }
 
         override fun onClick(v: View) {

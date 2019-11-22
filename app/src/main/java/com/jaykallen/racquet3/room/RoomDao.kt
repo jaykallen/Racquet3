@@ -1,6 +1,5 @@
 package com.jaykallen.racquet3.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.jaykallen.racquet3.model.RacquetModel
 

@@ -18,9 +18,6 @@ import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // JK 2019-11-11: Attempt to use Room db in Sandbox environment to put into Manage Right later.
-// todo how do I finish a fragment??
-// todo how do I call a query using the repository??
-// todo What is the MVI architecture??
 
 class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel

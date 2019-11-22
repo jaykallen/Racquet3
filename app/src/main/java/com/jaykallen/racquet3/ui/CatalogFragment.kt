@@ -18,8 +18,6 @@ import kotlinx.android.synthetic.main.content_main_toolbar.titleText
 import kotlinx.android.synthetic.main.fragment_catalog.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
-// todo add a home button to the toolbar
-
 class CatalogFragment : Fragment() {
     private lateinit var recyclerAdapter: CatalogAdapter
     private lateinit var viewModel: CatalogViewModel
@@ -42,6 +40,12 @@ class CatalogFragment : Fragment() {
         setupToolbar()
     }
 
+    private fun setupButtons() {
+        addImage.setOnClickListener {
+            setSafeArgs(0L)
+        }
+    }
+
     private fun setupToolbar() {
         titleText.text = "My Catalog"
     }
@@ -59,12 +63,6 @@ class CatalogFragment : Fragment() {
         }
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = recyclerAdapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                activity,
-                LinearLayoutManager.VERTICAL
-            )
-        )
     }
 
     private fun onRecyclerClick(racquetModel: RacquetModel) {
@@ -72,11 +70,6 @@ class CatalogFragment : Fragment() {
         setSafeArgs(racquetModel.id)
     }
 
-    private fun setupButtons() {
-        addImage.setOnClickListener {
-            setSafeArgs(0L)
-        }
-    }
 
     private fun setSafeArgs(id: Long) {
         println("Navigating to record $id")

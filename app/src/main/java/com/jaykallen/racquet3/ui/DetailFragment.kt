@@ -99,9 +99,6 @@ class DetailFragment : Fragment() {
     }
 
     private fun setupButtons(view: View) {
-        view.findViewById<TextView>(R.id.cancelText).setOnClickListener {
-            onCancelClick()
-        }
         view.findViewById<TextView>(R.id.doneText).setOnClickListener {
             onDoneClick()
         }
@@ -181,7 +178,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun onCancelClick() {
-        Navigation.findNavController(view!!).popBackStack(R.id.action_detailFragment_to_catalogFragment ,false)
+//        Navigation.findNavController(view!!).popBackStack(R.id.action_detailFragment_to_catalogFragment ,false)
     }
 
     private fun setDirectionSpinner2(direction: Double) {

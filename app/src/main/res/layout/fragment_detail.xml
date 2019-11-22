@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundGray"
     android:orientation="vertical">
 
     <include
@@ -16,9 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorWhite"
-            android:orientation="horizontal">
+            android:layout_margin="8dp">
 
             <EditText
                 android:id="@+id/nameEdit"
@@ -161,8 +160,8 @@
                 android:layout_below="@id/weightLabel"
                 android:layout_toEndOf="@id/balancePointLabel"
                 android:gravity="center"
-                android:textSize="16sp"
                 android:inputType="numberDecimal"
+                android:textSize="16sp"
                 tools:name="4" />
 
             <TextView
@@ -209,9 +208,9 @@
                 android:layout_below="@id/balancePointLabel"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/button_outline"
-                android:textSize="16sp"
                 android:text="Calculate"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/balanceLabel"
@@ -226,10 +225,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@id/headWeightEdit"
-                android:textSize="16sp"
                 android:layout_marginBottom="6dp"
                 android:layout_toRightOf="@id/balanceLabel"
-                android:drawSelectorOnTop="true" />
+                android:drawSelectorOnTop="true"
+                android:textSize="16sp" />
 
 
             <EditText
