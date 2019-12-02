@@ -57,16 +57,16 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         val lengthNum = Helper.verifyEntry(length)
         println("Calc HW: balance point=$balancePoint")
         if (units == "Inches") {
-            val midpoint = length / 2
-            mHeadWeight = Helper.calcHeadWeight(mSlope, mLength, balancePoint)
-            println("Slope: $mSlope Length:$mLength BP:$balancePoint")
-            setDirectionSpinner2(mHeadWeight)
-            headWeightEdit.setText(String.format("%.5g", Math.abs(mHeadWeight)))
+            val midpoint = lengthNum / 2
+            val headweight = (balancePointNum - midpoint) / slopeInches
+            println("Calc HW Formula:$balancePointNum-$midpoint/$slopeInches")
+            // todo livedata headweight = headweight
         }
     }
 
     fun calcBalancePoint(units: String?, length: String, headWeight: String) {
-        var headWeight: Double? = Helper.verifyEntry(headWeightEdit.text.toString())
+        var headWeightNum: Double? = Helper.verifyEntry(headWeightEdit.text.toString())
+        mLength = Helper.verifyEntry(lengthEdit.text.toString())
         println("Calculating Balancepoint: " + headWeight!!)
         if (headWeight > 0.0) {
             headWeight = getDirectionSpinner(headWeight)
