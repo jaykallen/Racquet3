@@ -1,21 +1,26 @@
-package com.jaykallen.racquet3
+package com.jaykallen.racquet3.ui
 
+import android.app.Dialog
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.view.GestureDetectorCompat
-import androidx.core.view.isInvisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import com.jaykallen.racquet3.room.RoomyDatabase
+import com.jaykallen.racquet3.R
+import com.jaykallen.racquet3.StartApp
 import com.jaykallen.racquet3.databinding.FragmentHomeBinding
-import kotlinx.android.synthetic.main.content_info_toolbar.*
-import kotlinx.android.synthetic.main.content_info_toolbar.titleText
+import com.jaykallen.racquet3.managers.SharedPrefsManager
+import com.jaykallen.racquet3.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.content_main_toolbar.*
+import kotlinx.android.synthetic.main.dialog_units.*
+import kotlinx.android.synthetic.main.dialog_yesno.*
 import kotlinx.android.synthetic.main.fragment_home.*
+
 
 // JK 2019-11-11: Attempt to use Room db in Sandbox environment to put into Manage Right later.
 
@@ -58,6 +63,59 @@ class HomeFragment : Fragment() {
         view.findViewById<Button>(R.id.measureButton).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_measureFragment)
         }
+        view.findViewById<Button>(R.id.unitsButton).setOnClickListener {
+            dialogUnits()
+        }
+        view.findViewById<Button>(R.id.clearButton).setOnClickListener {
+            dialogClearAll()
+        }
+    }
+
+    private fun dialogUnits() {
+        val dialog = Dialog(activity, R.style.DialogStyle)
+        dialog.setContentView(R.layout.dialog_units)
+        dialog.setTitle("Units")
+        dialog.unitsTextView.text = "Please select a Unit of Measure"
+        dialog.inchesButton.setOnClickListener {
+            SharedPrefsManager.setUnits(StartApp.applicationContext(), "Inches")
+            setUnits()
+            dialog.dismiss()
+        }
+        dialog.metricButton.setOnClickListener {
+            SharedPrefsManager.setUnits(StartApp.applicationContext(), "Metric")
+            setUnits()
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    private fun setUnits() {
+        if (SharedPrefsManager.getUnits(StartApp.applicationContext()) == "Inches") {
+            println("Units set to Inches")
+            SharedPrefsManager.setUnits(StartApp.applicationContext(), "Inches")
+            unitsButton.text = "Change Units from Inches"
+        } else {
+            println("Units set to Metric")
+            SharedPrefsManager.setUnits(StartApp.applicationContext(), "Metric")
+            unitsButton.text = "Change Units from Metric"
+        }
+    }
+
+    private fun dialogClearAll() {
+        val dialog = Dialog(activity, R.style.DialogStyle)
+        dialog.setContentView(R.layout.dialog_yesno)
+        dialog.setTitle("Delete All")
+        dialog.messageText.text = "Are you sure you want to delete all items?"
+        dialog.yesButton.setOnClickListener {
+            println("Delete all items!")
+            homeViewModel.deleteAll()
+            dialog.dismiss()
+        }
+        dialog.noButton.setOnClickListener {
+            println("Cancel delete")
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     private fun launchStory() {

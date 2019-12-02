@@ -48,7 +48,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/unitButton"
+                android:id="@+id/unitsButton"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_below="@id/nameEdit"

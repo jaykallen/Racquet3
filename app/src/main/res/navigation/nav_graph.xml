@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.jaykallen.racquet3.HomeFragment"
-        android:label="HomeFragment" >
+        android:name="com.jaykallen.racquet3.ui.HomeFragment"
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_catalogFragment"
             app:destination="@id/catalogFragment" />
@@ -24,17 +24,16 @@
     </fragment>
     <fragment
         android:id="@+id/catalogFragment"
-        android:name="com.procatdt.navsample.CatalogFragment"
-        android:label="CatalogFragment" >
+        android:name="com.procatdt.navsample.ui.CatalogFragment"
+        android:label="CatalogFragment">
         <action
             android:id="@+id/action_catalogFragment_to_detailFragment"
-            app:destination="@id/detailFragment" >
-        </action>
+            app:destination="@id/detailFragment"></action>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.jaykallen.racquet3.ui.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment">
         <action
             android:id="@+id/action_detailFragment_to_rulerFragment"
             app:destination="@id/rulerFragment" />
@@ -43,8 +42,8 @@
             app:destination="@id/catalogFragment" />
         <argument
             android:name="id"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/rulerFragment"
@@ -62,7 +61,7 @@
     <fragment
         android:id="@+id/measureFragment"
         android:name="com.jaykallen.racquet3.ui.MeasureFragment"
-        android:label="MeasureFragment" >
+        android:label="MeasureFragment">
         <action
             android:id="@+id/action_measureFragment_to_rulerFragment"
             app:destination="@id/rulerFragment" />

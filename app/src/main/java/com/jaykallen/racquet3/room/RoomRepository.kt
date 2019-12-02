@@ -35,4 +35,8 @@ class RoomRepository(private val roomDao: RoomDao) {
     fun delete(racquetModel: RacquetModel) {
         roomDao.delete(racquetModel)
     }
+
+    fun deleteAll() {
+        roomDao.deleteAll()
+    }
 }

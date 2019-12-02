@@ -1,4 +1,4 @@
-package com.procatdt.navsample
+package com.procatdt.navsample.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.ui.CatalogAdapter
+import com.procatdt.navsample.CatalogViewModel
 import kotlinx.android.synthetic.main.content_main_toolbar.*
-import kotlinx.android.synthetic.main.content_main_toolbar.titleText
 import kotlinx.android.synthetic.main.fragment_catalog.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class CatalogFragment : Fragment() {
     private lateinit var recyclerAdapter: CatalogAdapter

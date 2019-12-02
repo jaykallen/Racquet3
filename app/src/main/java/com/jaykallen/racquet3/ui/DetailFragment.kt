@@ -102,7 +102,7 @@ class DetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.doneText).setOnClickListener {
             onDoneClick()
         }
-        view.findViewById<Button>(R.id.unitButton).setOnClickListener {
+        view.findViewById<Button>(R.id.unitsButton).setOnClickListener {
             dialogUnits()
         }
         view.findViewById<Button>(R.id.calculateButton).setOnClickListener {
@@ -167,7 +167,7 @@ class DetailFragment : Fragment() {
         val dialog = Dialog(activity, R.style.DialogStyle)
         dialog.setContentView(R.layout.dialog_yesno)
         dialog.setTitle("Delete Record")
-        dialog.clearTextView.text = "Are you sure you want to delete this record?"
+        dialog.messageText.text = "Are you sure you want to delete this record?"
         dialog.yesButton.setOnClickListener {
             val racquetModel = createRacquet()
             viewModel.delete(racquetModel)

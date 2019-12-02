@@ -24,4 +24,7 @@ interface RoomDao {
     @Delete
     fun delete(racquetModel: RacquetModel)
 
+    @Query("delete from racquet_table")
+    fun deleteAll()
+
 }

@@ -2,15 +2,12 @@ package com.jaykallen.racquet3.ui
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.jaykallen.racquet3.HomeViewModel
-
 import com.jaykallen.racquet3.R
 import kotlinx.android.synthetic.main.content_main_toolbar.*
 

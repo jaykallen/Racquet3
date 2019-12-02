@@ -8,7 +8,7 @@
     >
     <TextView
         android:text="Please select Yes or No"
-        android:id="@+id/clearTextView"
+        android:id="@+id/messageText"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:layout_width="80dp"
         android:textSize="20dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/clearTextView"
+        android:layout_below="@id/messageText"
         android:layout_margin="8dp"
         />
     <Button
@@ -31,7 +31,7 @@
         android:textSize="20dp"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/clearTextView"
+        android:layout_below="@id/messageText"
         android:layout_alignParentRight="true"
         android:layout_margin="8dp"
         />
