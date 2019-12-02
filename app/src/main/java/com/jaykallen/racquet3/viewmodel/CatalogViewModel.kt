@@ -1,4 +1,4 @@
-package com.procatdt.navsample
+package com.jaykallen.racquet3.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*

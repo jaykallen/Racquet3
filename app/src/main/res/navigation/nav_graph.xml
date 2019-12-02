@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/catalogFragment"
-        android:name="com.procatdt.navsample.ui.CatalogFragment"
+        android:name="com.jaykallen.racquet3.ui.CatalogFragment"
         android:label="CatalogFragment">
         <action
             android:id="@+id/action_catalogFragment_to_detailFragment"

@@ -1,4 +1,4 @@
-package com.procatdt.navsample.ui
+package com.jaykallen.racquet3.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.model.RacquetModel
-import com.jaykallen.racquet3.ui.CatalogAdapter
-import com.procatdt.navsample.CatalogViewModel
+import com.jaykallen.racquet3.viewmodel.CatalogViewModel
 import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.fragment_catalog.*
 

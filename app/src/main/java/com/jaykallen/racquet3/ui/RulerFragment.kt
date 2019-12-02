@@ -1,4 +1,4 @@
-package com.jaykallen.racquet3
+package com.jaykallen.racquet3.ui
 
 
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.model.RulerModel
 import com.jaykallen.racquet3.ui.RulerAdapter
 import kotlinx.android.synthetic.main.content_info_toolbar.*
