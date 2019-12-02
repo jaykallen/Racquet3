@@ -17,7 +17,9 @@ import com.jaykallen.racquet3.managers.Helper
 import com.jaykallen.racquet3.managers.SharedPrefsManager
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.viewmodel.DetailViewModel
+import kotlinx.android.synthetic.main.content_detail_toolbar.*
 import kotlinx.android.synthetic.main.content_main_toolbar.*
+import kotlinx.android.synthetic.main.content_main_toolbar.titleText
 import kotlinx.android.synthetic.main.dialog_units.*
 import kotlinx.android.synthetic.main.dialog_yesno.*
 import kotlinx.android.synthetic.main.fragment_detail.*
@@ -32,9 +34,6 @@ class DetailFragment : Fragment() {
     private var mBalance: String = ""
     private var recordId: Long = 0L
     private var mSlope: Double = 0.toDouble()
-    private var mLength = 0.0
-    private var mBalancePoint = 0.0
-    private var mHeadWeight = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -65,15 +64,18 @@ class DetailFragment : Fragment() {
     }
 
     private fun listenData() {
-        println("listening to id call")
-        viewModel.getId(recordId)
-        viewModel.idLiveData.observe(this, Observer { item ->
-            updateUi(item)
-        })
+        if (recordId > 0L) {
+            viewModel.getId(recordId)
+            viewModel.idLiveData.observe(this, Observer { item ->
+                updateUi(item)
+            })
+        } else {
+            titleText.text = "New Racquet"
+        }
     }
 
     private fun updateUi(racquet: RacquetModel) {
-        println("Updating UI with ${racquet.name}")
+        println("Updating UI with record $recordId: ${racquet.name}")
         nameEdit.setText(racquet.name)
         lengthEdit.setText(racquet.length.toString())
         weightEdit.setText(racquet.weight.toString())
@@ -106,34 +108,14 @@ class DetailFragment : Fragment() {
             dialogUnits()
         }
         view.findViewById<Button>(R.id.calculateButton).setOnClickListener {
-            calcHeadWeight()
-            calcBalancePoint()
+            if (headWeightEdit.text.toString() == "") {
+                viewModel.calcHeadWeight(mUnits, lengthEdit.text.toString(), balancePointEdit.text.toString())
+            } else {
+                viewModel.calcBalancePoint(mUnits, lengthEdit.text.toString(), headWeightEdit.text.toString())
+            }
         }
         view.findViewById<Button>(R.id.deleteButton).setOnClickListener {
             onDeleteClick()
-        }
-    }
-
-    private fun calcHeadWeight() {
-        val balancePoint = Helper.verifyEntry(balancePointEdit.text.toString())
-        println("Calculating headweight: " + balancePoint)
-        if (balancePoint > 0.0) {
-            mLength = Helper.verifyEntry(lengthEdit.text.toString())
-            mHeadWeight = Helper.calcHeadWeight(mSlope, mLength, balancePoint)
-            println("Slope: $mSlope Length:$mLength BP:$balancePoint")
-            setDirectionSpinner2(mHeadWeight)
-            headWeightEdit.setText(String.format("%.5g", Math.abs(mHeadWeight)))
-        }
-    }
-
-    private fun calcBalancePoint() {
-        var headWeight: Double? = Helper.verifyEntry(headWeightEdit.text.toString())
-        println("Calculating Balancepoint: " + headWeight!!)
-        if (headWeight > 0.0) {
-            headWeight = getDirectionSpinner(headWeight)
-            mLength = Helper.verifyEntry(lengthEdit.text.toString())
-            mBalancePoint = Helper.calcBalancePoint(mSlope, mLength, headWeight)
-            balancePointEdit.setText(Math.abs(mBalancePoint).toString() + "")
         }
     }
 
@@ -177,10 +159,6 @@ class DetailFragment : Fragment() {
         dialog.show()
     }
 
-    private fun onCancelClick() {
-//        Navigation.findNavController(view!!).popBackStack(R.id.action_detailFragment_to_catalogFragment ,false)
-    }
-
     private fun setDirectionSpinner2(direction: Double) {
         balanceSpinner.post {
             var headdir = 1
@@ -205,8 +183,7 @@ class DetailFragment : Fragment() {
         return value!!
     }
 
-    private fun dialogUnits() {
-        // This will set the units
+    private fun dialogUnits() {         // This will set the units
         val dialog = Dialog(activity, R.style.DialogStyle)
         dialog.setContentView(R.layout.dialog_units)
         dialog.setTitle("Units")

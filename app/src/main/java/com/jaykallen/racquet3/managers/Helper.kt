@@ -3,6 +3,9 @@ package com.jaykallen.racquet3.managers
 // Created by jkallen on 4/5/2017
 
 object Helper {
+    private val slopeMetric = 0.3175
+    private val slopeInches = 0.125
+
     fun calcHeadWeight(slope: Double, length: Double, balancePoint: Double): Double {
         var headweight = 0.0
         if (length > 0 && balancePoint > 0) {
