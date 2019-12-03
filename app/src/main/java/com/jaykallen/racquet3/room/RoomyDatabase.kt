@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.jaykallen.racquet3.model.RacquetModel
 
 
-@Database(entities = [RacquetModel::class], version = 3, exportSchema = false)
+@Database(entities = [RacquetModel::class], version = 4, exportSchema = false)
 abstract class RoomyDatabase : RoomDatabase() {
     abstract fun roomDao(): RoomDao
 

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.StartApp
 import com.jaykallen.racquet3.managers.SharedPrefsManager
@@ -20,14 +21,14 @@ import kotlinx.android.synthetic.main.dialog_units.*
 import kotlinx.android.synthetic.main.dialog_yesno.*
 import kotlinx.android.synthetic.main.fragment_detail.*
 
-// JK 2019-12-03: This is a very complex screen with many buttons
-// todo setup conversion for metric
+// JK 2019-12-03: This is a very complex screen with many buttons.  Possibly switch this to Data Binding??
+// When 0 is requested from Room, this indicates a new record
 
 class DetailFragment : Fragment() {
     private lateinit var viewModel: DetailViewModel
     private var mUnits: String = "Inches"
     private var mBalance: String = "Head Light"
-    private var recordId: Long = -1L                    // Default for new racquet
+    private var recordId: Long = 0L                    // Default for new racquet
     private var racquet = RacquetModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,16 +53,17 @@ class DetailFragment : Fragment() {
     }
 
     private fun listenData() {
-        if (recordId >= 0L) {
+        if (recordId > 0L) {
             viewModel.getId(recordId)
             viewModel.idLiveData.observe(this, Observer { item ->
                 racquet = item
-                titleText.text = "Update"
+                titleText.text = "Update $recordId"
+                updateUi(racquet)
             })
         } else {
-            titleText.text = "New Racquet"
+            titleText.text = "New"
+            updateUi(racquet)
         }
-        updateUi(racquet)
     }
 
     private fun setupButtons(view: View) {
@@ -70,6 +72,9 @@ class DetailFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.unitsButton).setOnClickListener {
             onUnitsClick()
+        }
+        view.findViewById<Button>(R.id.rulerButton).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_rulerFragment)
         }
         view.findViewById<Button>(R.id.calculateButton).setOnClickListener {
             onCalcClick()
@@ -97,7 +102,7 @@ class DetailFragment : Fragment() {
         lengthEdit.setText(racquet.length.toString())
         weightEdit.setText(racquet.weight.toString())
         balancePointEdit.setText(racquet.balancePoint.toString())
-        headWeightEdit.setText(racquet.headWeight.toString())   // todo format double to only 1 digit
+        headWeightEdit.setText(String.format("%.1f", racquet.headWeight))
         balanceButton.text = racquet.balance
         notesEdit.setText(racquet.notes)
     }
@@ -128,7 +133,7 @@ class DetailFragment : Fragment() {
 
     private fun onSaveClick() {
         updateRacquet()
-        if (recordId == -1L) {
+        if (recordId == 0L) {
             println("Add racquet " + nameEdit.text.toString())
             viewModel.insert(racquet)
         } else {
