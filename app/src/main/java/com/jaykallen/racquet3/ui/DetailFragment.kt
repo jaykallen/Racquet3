@@ -31,7 +31,7 @@ class DetailFragment : Fragment() {
     private val slopeMetric = 0.3175
     private val slopeInches = 0.125
     private var mUnits: String? = null
-    private var mBalance: String = ""
+    private var mBalance: String = "Head Light"
     private var recordId: Long = 0L
     private var mSlope: Double = 0.toDouble()
 
@@ -49,6 +49,35 @@ class DetailFragment : Fragment() {
         listenData()
         setupToolbar()
         setupButtons(view!!)
+    }
+
+    private fun setupButtons(view: View) {
+        view.findViewById<TextView>(R.id.doneText).setOnClickListener {
+            onDoneClick()
+        }
+        view.findViewById<Button>(R.id.unitsButton).setOnClickListener {
+            dialogUnits()
+        }
+        view.findViewById<Button>(R.id.calculateButton).setOnClickListener {
+            onCalcClick()
+        }
+        view.findViewById<Button>(R.id.deleteButton).setOnClickListener {
+            onDeleteClick()
+        }
+        view.findViewById<Button>(R.id.balanceButton).setOnClickListener {
+            changeBalance()
+        }
+    }
+
+    private fun onCalcClick() {
+        if (headWeightEdit.text.toString() == "") {
+            viewModel.calcHeadWeight(mUnits, lengthEdit.text.toString(), balancePointEdit.text.toString())
+        } else {
+            viewModel.calcBalancePoint(mUnits, lengthEdit.text.toString(), headWeightEdit.text.toString(), true)
+        }
+        viewModel.statLiveData.observe(this, Observer { item ->
+            updateUi(item)
+        })
     }
 
     private fun setupToolbar() {
@@ -100,23 +129,13 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setupButtons(view: View) {
-        view.findViewById<TextView>(R.id.doneText).setOnClickListener {
-            onDoneClick()
+    private fun changeBalance() {
+        when (mBalance) {
+            "Head Light" -> mBalance = "Even"
+            "Even" -> mBalance = "Head Heavy"
+            "Head Heavy" -> mBalance = "Head Light"
         }
-        view.findViewById<Button>(R.id.unitsButton).setOnClickListener {
-            dialogUnits()
-        }
-        view.findViewById<Button>(R.id.calculateButton).setOnClickListener {
-            if (headWeightEdit.text.toString() == "") {
-                viewModel.calcHeadWeight(mUnits, lengthEdit.text.toString(), balancePointEdit.text.toString())
-            } else {
-                viewModel.calcBalancePoint(mUnits, lengthEdit.text.toString(), headWeightEdit.text.toString())
-            }
-        }
-        view.findViewById<Button>(R.id.deleteButton).setOnClickListener {
-            onDeleteClick()
-        }
+        balanceButton.text = mBalance
     }
 
     private fun createRacquet(): RacquetModel {
@@ -157,30 +176,6 @@ class DetailFragment : Fragment() {
         }
         dialog.noButton.setOnClickListener { dialog.dismiss() }
         dialog.show()
-    }
-
-    private fun setDirectionSpinner2(direction: Double) {
-        balanceSpinner.post {
-            var headdir = 1
-            mBalance = "Even"
-            if (direction < 0) {
-                headdir = 0
-                mBalance = "Head Light"
-            } else if (direction > 0) {
-                headdir = 2
-                mBalance = "Head Heavy"
-            }
-            balanceSpinner.setSelection(headdir)
-        }
-    }
-
-    private fun getDirectionSpinner(value: Double?): Double {
-        var value = value
-        val headdir = balanceSpinner.selectedItemPosition
-        if (headdir == 0) {
-            value = value!! * -1
-        }
-        return value!!
     }
 
     private fun dialogUnits() {         // This will set the units

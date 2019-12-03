@@ -19,6 +19,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     private val slopeInches = 0.125
     private val repository: RoomRepository
     var idLiveData = MutableLiveData<RacquetModel>()
+    var statLiveData = MutableLiveData<Double>()
 
     init {
         val dao = RoomyDatabase.getDatabase(application).roomDao()
@@ -59,20 +60,20 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         if (units == "Inches") {
             val midpoint = lengthNum / 2
             val headweight = (balancePointNum - midpoint) / slopeInches
-            println("Calc HW Formula:$balancePointNum-$midpoint/$slopeInches")
-            // todo livedata headweight = headweight
+            println("Calc HW Formula:$balancePointNum-$midpoint/$slopeInches=$headweight")
+            statLiveData.value = headweight
         }
     }
 
-    fun calcBalancePoint(units: String?, length: String, headWeight: String) {
-        var headWeightNum: Double? = Helper.verifyEntry(headWeightEdit.text.toString())
-        mLength = Helper.verifyEntry(lengthEdit.text.toString())
-        println("Calculating Balancepoint: " + headWeight!!)
-        if (headWeight > 0.0) {
-            headWeight = getDirectionSpinner(headWeight)
-            mLength = Helper.verifyEntry(lengthEdit.text.toString())
-            mBalancePoint = Helper.calcBalancePoint(mSlope, mLength, headWeight)
-            balancePointEdit.setText(Math.abs(mBalancePoint).toString() + "")
+    fun calcBalancePoint(units: String?, length: String, headWeight: String, light: Boolean) {
+        var headWeightNum = Helper.verifyEntry(headWeight)
+        val lengthNum = Helper.verifyEntry(length)
+        println("Calc BP: headweight = $headWeight")
+        if (units == "Inches") {
+            val midpoint = lengthNum / 2
+            val balancePoint = headWeightNum * slopeInches + midpoint
+            println("Calc HW Formula:$headWeightNum*$slopeInches+$midpoint=$balancePoint")
+            statLiveData.value = balancePoint
         }
     }
 
