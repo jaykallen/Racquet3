@@ -3,7 +3,6 @@ package com.jaykallen.racquet3.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.jaykallen.racquet3.managers.Helper
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.room.RoomRepository
 import com.jaykallen.racquet3.room.RoomyDatabase
@@ -69,7 +68,6 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun calcHeadWeight(units: String, length: Double, balancePoint: Double): Double {
-        println("Calc HW: balance point=$balancePoint")
         val slope = if (units == "Inches") slopeInches else slopeMetric
         val midpoint = length / 2
         val headWeight = (balancePoint - midpoint) / slope
@@ -79,12 +77,11 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun calcBalancePoint(units: String, length: Double, headWeight: Double, light: Boolean): Double {
-        println("Calc BP: head weight = $headWeight")
         val slope = if (units == "Inches") slopeInches else slopeMetric
         var midpoint = length / 2
         if (light) midpoint = -midpoint
         val balancePoint = headWeight * slope + midpoint
-        println("Calc HW Formula: $headWeight * $slope + $midpoint = $balancePoint")
+        println("Calc BP Formula: $headWeight * $slope + $midpoint = $balancePoint")
         return balancePoint
     }
 

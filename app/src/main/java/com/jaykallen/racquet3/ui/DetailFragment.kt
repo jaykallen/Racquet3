@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
     private lateinit var viewModel: DetailViewModel
-    private var mUnits: String? = null
+    private var mUnits: String = "Inches"
     private var mBalance: String = "Head Light"
     private var recordId: Long = -1L                    // Default for new racquet
     private var racquet = RacquetModel()
@@ -85,8 +85,8 @@ class DetailFragment : Fragment() {
     private fun onCalcClick() {
         updateRacquet()
         viewModel.calcRacquet(racquet)
-        viewModel.statLiveData.observe(this, Observer { stat ->
-            racquet.balancePoint = stat
+        viewModel.statLiveData.observe(this, Observer { modified ->
+            racquet = modified
             updateUi(racquet)
         })
     }
@@ -97,7 +97,8 @@ class DetailFragment : Fragment() {
         lengthEdit.setText(racquet.length.toString())
         weightEdit.setText(racquet.weight.toString())
         balancePointEdit.setText(racquet.balancePoint.toString())
-        headWeightEdit.setText(racquet.headWeight.toString())
+        headWeightEdit.setText(racquet.headWeight.toString())   // todo format double to only 1 digit
+        balanceButton.text = racquet.balance
         notesEdit.setText(racquet.notes)
     }
 
