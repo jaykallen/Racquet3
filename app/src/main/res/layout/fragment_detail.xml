@@ -84,7 +84,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_toEndOf="@id/lengthEdit"
                 android:gravity="center"
-                android:text="inches" />
+                android:text="sq in" />
 
             <TextView
                 android:id="@+id/lengthLabel"
@@ -113,7 +113,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_toEndOf="@id/lengthEdit"
                 android:gravity="center"
-                android:text="inches" />
+                android:text="in" />
 
 
             <TextView
@@ -172,7 +172,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_toEndOf="@id/balancePointEdit"
                 android:gravity="center"
-                android:text="inches" />
+                android:text="in" />
 
             <Button
                 android:id="@+id/rulerButton"
@@ -199,7 +199,8 @@
                 android:layout_below="@id/balancePointLabel"
                 android:layout_toRightOf="@id/headWeightLabel"
                 android:gravity="center"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/calculateButton"
@@ -223,7 +224,7 @@
             <Button
                 android:id="@+id/balanceButton"
                 android:layout_width="100dp"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_below="@id/headWeightLabel"
                 android:layout_toEndOf="@id/balanceLabel"
                 android:background="@drawable/button_outline"

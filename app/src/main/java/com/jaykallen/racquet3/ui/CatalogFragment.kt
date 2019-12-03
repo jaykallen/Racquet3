@@ -38,7 +38,7 @@ class CatalogFragment : Fragment() {
 
     private fun setupButtons() {
         addImage.setOnClickListener {
-            setSafeArgs(0L)
+            setSafeArgs(-1L)
         }
     }
 

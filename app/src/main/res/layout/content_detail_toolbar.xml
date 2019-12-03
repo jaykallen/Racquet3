@@ -13,12 +13,12 @@
         android:ellipsize="end"
         android:gravity="center"
         android:lines="1"
-        android:text="Edit"
+        android:text="Update"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/doneText"
+        android:id="@+id/saveText"
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
@@ -26,8 +26,7 @@
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:maxLines="1"
-        android:onClick="onDoneClick"
-        android:text="Done"
+        android:text="Save"
         android:textColor="#FFF"
         android:textSize="14sp"
         android:textStyle="bold" />
