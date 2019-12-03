@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.dialog_units.*
 import kotlinx.android.synthetic.main.dialog_yesno.*
 import kotlinx.android.synthetic.main.fragment_detail.*
+import java.lang.Exception
 
 // JK 2019-12-03: This is a very complex screen with many buttons.  Possibly switch this to Data Binding??
 // When 0 is requested from Room, this indicates a new record
@@ -118,6 +119,13 @@ class DetailFragment : Fragment() {
         balanceButton.text = mBalance
     }
 
+    private fun validateFields(): String {
+        var errorString = ""
+        if (nameEdit.text.toString().isEmpty()) errorString = "Name cannot be blank"
+        if (lengthEdit.text.toString().toDouble() <= 0.0) errorString += "Length cannot be 0"
+        return errorString
+    }
+
     private fun updateRacquet() {
         // todo add field validation
         racquet.name = nameEdit.text.toString()
@@ -141,6 +149,11 @@ class DetailFragment : Fragment() {
             racquet.id = recordId
             viewModel.update(racquet)
         }
+        try {
+            activity?.onBackPressed()
+        } catch (e: Exception) {
+            println(e.message)
+        }
     }
 
     private fun onDeleteClick() {
@@ -150,7 +163,11 @@ class DetailFragment : Fragment() {
         dialog.messageText.text = "Are you sure you want to delete this record?"
         dialog.yesButton.setOnClickListener {
             viewModel.delete(racquet)
-            // todo exit the screen. how?
+            try {
+                activity?.onBackPressed()
+            } catch (e: Exception) {
+                println(e.message)
+            }
             dialog.dismiss()
         }
         dialog.noButton.setOnClickListener { dialog.dismiss() }
