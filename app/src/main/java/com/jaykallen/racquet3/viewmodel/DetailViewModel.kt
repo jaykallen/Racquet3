@@ -82,7 +82,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         if (light) midpoint = -midpoint
         val balancePoint = headWeight * slope + midpoint
         println("Calc BP Formula: $headWeight * $slope + $midpoint = $balancePoint")
-        return balancePoint
+        return Math.abs(balancePoint)
     }
 
 }

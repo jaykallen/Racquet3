@@ -4,21 +4,13 @@ package com.jaykallen.racquet3.managers
 
 object Helper {
 
-    fun calcBalancePoint(slope: Double, length: Double, headweight: Double): Double {
-        var balancepoint = 0.0
-        val midpoint = length / 2
-        balancepoint = headweight * slope + midpoint
-        return balancepoint
-    }
-
-    fun verifyEntry(entry: String): Double {
+    fun toDouble(entry: String): Double {
         var entryDouble = 0.0
         try {
             entryDouble = java.lang.Double.parseDouble(NumOnly(entry))
         } catch (e: Exception) {
             return 0.0
         }
-
         return entryDouble
     }
 

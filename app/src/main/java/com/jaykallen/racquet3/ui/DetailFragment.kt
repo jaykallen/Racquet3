@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.StartApp
+import com.jaykallen.racquet3.managers.Helper
 import com.jaykallen.racquet3.managers.SharedPrefsManager
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.viewmodel.DetailViewModel
@@ -89,12 +91,45 @@ class DetailFragment : Fragment() {
     }
 
     private fun onCalcClick() {
-        updateRacquet()
-        viewModel.calcRacquet(racquet)
-        viewModel.statLiveData.observe(this, Observer { modified ->
-            racquet = modified
-            updateUi(racquet)
-        })
+        if (validateFields()) {
+            updateRacquet()
+            viewModel.calcRacquet(racquet)
+            viewModel.statLiveData.observe(this, Observer { modified ->
+                racquet = modified
+                updateUi(racquet)
+            })
+        }
+    }
+
+    private fun onSaveClick() {
+        if (validateFields()) {
+            updateRacquet()
+            if (recordId == 0L) {
+                println("Add racquet " + nameEdit.text.toString())
+                viewModel.insert(racquet)
+            } else {
+                println("Update racquet " + nameEdit.text.toString())
+                racquet.id = recordId
+                viewModel.update(racquet)
+            }
+            try {
+                activity?.onBackPressed()
+            } catch (e: Exception) {
+                println(e.message)
+            }
+        }
+    }
+
+    private fun updateRacquet() {
+        racquet.name = nameEdit.text.toString()
+        racquet.units = mUnits
+        racquet.headSize = Helper.toDouble(headSizeEdit.text.toString())
+        racquet.length = Helper.toDouble(lengthEdit.text.toString())
+        racquet.weight = Helper.toDouble(weightEdit.text.toString())
+        racquet.balance = mBalance
+        racquet.balancePoint = Helper.toDouble(balancePointEdit.text.toString())
+        racquet.headWeight = Helper.toDouble(headWeightEdit.text.toString())
+        racquet.notes = notesEdit.text.toString()
     }
 
     private fun updateUi(racquet: RacquetModel) {
@@ -108,7 +143,6 @@ class DetailFragment : Fragment() {
         notesEdit.setText(racquet.notes)
     }
 
-
     private fun changeBalance() {
         when (mBalance) {
             "Head Light" -> mBalance = "Even"
@@ -119,41 +153,12 @@ class DetailFragment : Fragment() {
         balanceButton.text = mBalance
     }
 
-    private fun validateFields(): String {
+    private fun validateFields(): Boolean {
         var errorString = ""
-        if (nameEdit.text.toString().isEmpty()) errorString = "Name cannot be blank"
-        if (lengthEdit.text.toString().toDouble() <= 0.0) errorString += "Length cannot be 0"
-        return errorString
-    }
-
-    private fun updateRacquet() {
-        // todo add field validation
-        racquet.name = nameEdit.text.toString()
-        racquet.units = mUnits
-        racquet.headSize = headSizeEdit.text.toString().toDouble()
-        racquet.length = lengthEdit.text.toString().toDouble()
-        racquet.weight = weightEdit.text.toString().toDouble()
-        racquet.balance = mBalance
-        racquet.balancePoint = balancePointEdit.text.toString().toDouble()
-        racquet.headWeight = headWeightEdit.text.toString().toDouble()
-        racquet.notes = notesEdit.text.toString()
-    }
-
-    private fun onSaveClick() {
-        updateRacquet()
-        if (recordId == 0L) {
-            println("Add racquet " + nameEdit.text.toString())
-            viewModel.insert(racquet)
-        } else {
-            println("Update racquet " + nameEdit.text.toString())
-            racquet.id = recordId
-            viewModel.update(racquet)
-        }
-        try {
-            activity?.onBackPressed()
-        } catch (e: Exception) {
-            println(e.message)
-        }
+        if (nameEdit.text.toString().isEmpty()) errorString = "Name cannot be blank. "
+        if (lengthEdit.text.toString().toDouble() <= 0.0) errorString += "Length cannot be 0."
+        if (errorString != "") Toast.makeText(activity, errorString, Toast.LENGTH_LONG).show()
+        return errorString == ""
     }
 
     private fun onDeleteClick() {
