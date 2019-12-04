@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/colorDarkGray"
+    android:background="@color/colorWilsonDarkGreenLid"
     android:layout_height="50dp">
 
     <TextView
@@ -13,6 +13,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:lines="1"
+        android:textStyle="bold"
         android:text="Update"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
@@ -28,8 +29,7 @@
         android:maxLines="1"
         android:text="Save"
         android:textColor="#FFF"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textSize="14sp" />
 
 </RelativeLayout>
 
