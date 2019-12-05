@@ -16,8 +16,8 @@ object SharedPrefsManager {
         sharedprefs.putString("Units", units).apply()
     }
 
-    fun getUnits(context: Context): String? {
+    fun getUnits(context: Context): String {
         preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        return preferences.getString("Units", "Inches")  // 2nd value is default value.
+        return preferences.getString("Units", "Inches")?:"Inches"  // 2nd value is default value.
     }
 }

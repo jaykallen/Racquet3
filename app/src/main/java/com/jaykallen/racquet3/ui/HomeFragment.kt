@@ -30,8 +30,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -40,13 +39,15 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = homeViewModel
         setupButtons(view!!)
-        launchStory()
         setupToolbar()
+        launchStory()
     }
 
     private fun setupToolbar() {
         titleText.text = "In Development"
         addImage.visibility = View.INVISIBLE
+        val units = SharedPrefsManager.getUnits(StartApp.applicationContext())
+        unitsButton.text = "Change Units from $units"
     }
 
     private fun setupButtons(view: View) {

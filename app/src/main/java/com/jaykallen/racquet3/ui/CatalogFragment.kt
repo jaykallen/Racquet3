@@ -62,13 +62,12 @@ class CatalogFragment : Fragment() {
     }
 
     private fun onRecyclerClick(racquetModel: RacquetModel) {
-        println("RecyclerView selected $racquetModel with id=${racquetModel.id}")
         setSafeArgs(racquetModel.id)
     }
 
 
     private fun setSafeArgs(id: Long) {
-        println("Navigating to record $id")
+        println("Clicked record $id")
         val action = CatalogFragmentDirections.actionCatalogFragmentToDetailFragment().setId(id)
         Navigation.findNavController(view!!).navigate(action)
     }

@@ -52,7 +52,10 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun calcRacquet(racquet: RacquetModel) {
-        if (racquet.headWeight == 0.0) {
+        if (racquet.balancePoint == 0.0) {
+            val bp = calcBalancePoint(racquet.units, racquet.length, racquet.headWeight, racquet.balance == "Head Light")
+            racquet.balancePoint = bp
+        } else {
             val hw = calcHeadWeight(racquet.units, racquet.length, racquet.balancePoint)
             when {
                 hw < 0.0 -> racquet.balance = "Head Light"
@@ -60,9 +63,6 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
                 hw > 0.0 -> racquet.balance = "Head Heavy"
             }
             racquet.headWeight = Math.abs(hw)
-        } else {
-            val bp = calcBalancePoint(racquet.units, racquet.length, racquet.headWeight, racquet.balance == "Head Light")
-            racquet.balancePoint = bp
         }
         statLiveData.value = racquet
     }

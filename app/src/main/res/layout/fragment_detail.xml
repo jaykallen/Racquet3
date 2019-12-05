@@ -34,27 +34,14 @@
                 android:gravity="center_vertical"
                 android:text="Units" />
 
-            <TextView
-                android:id="@+id/unitText"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/nameEdit"
-                android:layout_toRightOf="@id/unit_label"
-                android:clickable="true"
-                android:gravity="center"
-                android:onClick="onUnitsClick"
-                android:text="Inches"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp" />
-
             <Button
                 android:id="@+id/unitsButton"
                 android:layout_width="100dp"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_below="@id/nameEdit"
-                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/unit_label"
                 android:background="@drawable/button_outline"
-                android:text="Change"
+                android:text="Inches"
                 android:textAllCaps="false" />
 
             <TextView
