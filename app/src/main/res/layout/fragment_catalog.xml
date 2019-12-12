@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundGray">
+    android:background="@color/colorYellowBackground">
 
     <include
         android:id="@+id/mainToolbar"
@@ -21,7 +21,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/colorBackgroundGray"
+        android:background="@color/colorYellowBackground"
         app:layout_constraintTop_toBottomOf="@id/mainToolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

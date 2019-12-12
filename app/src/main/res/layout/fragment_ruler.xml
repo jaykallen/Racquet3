@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorYellowBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fraction"
+        android:textColor="@color/colorBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/decimalText"
         app:layout_constraintTop_toBottomOf="@id/rulerImage" />
@@ -30,6 +32,7 @@
         android:id="@+id/decimalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
         android:text="Decimal"
         app:layout_constraintStart_toEndOf="@id/fractionText"
         app:layout_constraintEnd_toStartOf="@id/millimeterText"
@@ -38,6 +41,7 @@
     <TextView
         android:id="@+id/millimeterText"
         android:layout_width="wrap_content"
+        android:textColor="@color/colorBlack"
         android:layout_height="wrap_content"
         android:text="Millimeter"
         app:layout_constraintStart_toEndOf="@id/decimalText"

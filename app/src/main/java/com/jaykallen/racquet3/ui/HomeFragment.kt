@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        titleText.text = "In Development"
+        titleText.text = "Racquet Headweight Calculator"
         addImage.visibility = View.INVISIBLE
         val units = SharedPrefsManager.getUnits(StartApp.applicationContext())
         unitsButton.text = "Change Units from $units"
