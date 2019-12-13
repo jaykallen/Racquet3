@@ -9,7 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.jaykallen.racquet3.R
+import com.jaykallen.racquet3.StartApp
 import com.jaykallen.racquet3.model.RacquetModel
 import com.jaykallen.racquet3.viewmodel.CatalogViewModel
 import kotlinx.android.synthetic.main.content_main_toolbar.*
@@ -34,6 +37,13 @@ class CatalogFragment : Fragment() {
         setupButtons()
         observeData()
         setupToolbar()
+        loadAd()
+    }
+
+    private fun loadAd() {
+        MobileAds.initialize(activity) {}
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     private fun setupButtons() {

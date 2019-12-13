@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.jaykallen.racquet3.viewmodel.HomeViewModel" />
@@ -41,10 +42,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_outline"
-            android:text="See Catalog"
             android:drawableTop="@drawable/list"
             android:paddingTop="50dp"
             android:paddingBottom="50dp"
+            android:text="See Catalog"
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toStartOf="@id/guideButton"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +59,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/button_outline"
-            android:text="See Headweight Guide"
             android:padding="5dp"
+            android:text="See Headweight Guide"
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/catalogButton"
@@ -114,6 +115,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/unitsButton"
             app:layout_goneMarginTop="20dp" />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

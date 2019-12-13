@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.jaykallen.racquet3.R
 import com.jaykallen.racquet3.StartApp
 import com.jaykallen.racquet3.databinding.FragmentHomeBinding
@@ -19,7 +21,9 @@ import com.jaykallen.racquet3.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.content_main_toolbar.*
 import kotlinx.android.synthetic.main.dialog_units.*
 import kotlinx.android.synthetic.main.dialog_yesno.*
+import kotlinx.android.synthetic.main.fragment_catalog.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.adView
 
 
 // JK 2019-11-11: Attempt to use Room db in Sandbox environment to put into Manage Right later.
@@ -41,6 +45,13 @@ class HomeFragment : Fragment() {
         setupButtons(view!!)
         setupToolbar()
         launchStory()
+        loadAd()
+    }
+
+    private fun loadAd() {
+        MobileAds.initialize(activity) {}
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     private fun setupToolbar() {
