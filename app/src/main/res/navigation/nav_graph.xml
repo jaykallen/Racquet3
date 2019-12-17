@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.jaykallen.racquet3.ui.HomeFragment"
+        android:name="com.jaykallen.racquet.ui.HomeFragment"
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_catalogFragment"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/catalogFragment"
-        android:name="com.jaykallen.racquet3.ui.CatalogFragment"
+        android:name="com.jaykallen.racquet.ui.CatalogFragment"
         android:label="CatalogFragment">
         <action
             android:id="@+id/action_catalogFragment_to_detailFragment"
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.jaykallen.racquet3.ui.DetailFragment"
+        android:name="com.jaykallen.racquet.ui.DetailFragment"
         android:label="DetailFragment">
         <action
             android:id="@+id/action_detailFragment_to_rulerFragment"
@@ -41,16 +41,16 @@
     </fragment>
     <fragment
         android:id="@+id/rulerFragment"
-        android:name="com.jaykallen.racquet3.ui.RulerFragment"
+        android:name="com.jaykallen.racquet.ui.RulerFragment"
         android:label="fragment_ruler"
         tools:layout="@layout/fragment_ruler" />
     <fragment
         android:id="@+id/guideFragment"
-        android:name="com.jaykallen.racquet3.ui.GuideFragment"
+        android:name="com.jaykallen.racquet.ui.GuideFragment"
         android:label="GuideFragment" />
     <fragment
         android:id="@+id/measureFragment"
-        android:name="com.jaykallen.racquet3.ui.MeasureFragment"
+        android:name="com.jaykallen.racquet.ui.MeasureFragment"
         android:label="MeasureFragment">
         <action
             android:id="@+id/action_measureFragment_to_rulerFragment"

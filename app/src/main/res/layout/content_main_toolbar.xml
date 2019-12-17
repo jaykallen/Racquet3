@@ -13,7 +13,6 @@
         android:ellipsize="end"
         android:gravity="center"
         android:lines="1"
-        android:textStyle="bold"
         android:text="Edit"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
